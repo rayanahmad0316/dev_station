@@ -1,0 +1,46 @@
+# Configure Prompt
+export PS1="
+%B%U%n%u%b on %m via %y
+[%D{%m/%d/%Y %I:%M:%S %p}] %B%U%~%u%b
+%!: %# "
+export MYPS1=$PS1
+
+stty erase ^H
+case $TERM in
+    xterm*)
+        precmd () {print -Pn "\e]0;%n@%m: %~\a"}
+        ;;
+esac
+
+export CLICOLOR=TRUE
+export VISUAL=vim
+
+# Configure ZSH History
+export HISTFILE=~/.zsh_history
+export APPEND_HISTORY=TRUE
+export HISTSIZE=200000
+export SAVEHIST=100000
+export INC_APPEND_HISTORY=TRUE
+export EXTENDED_HISTORY=TRUE
+export HIST_IGNORE_DUPS=TRUE
+export HIST_FCNTL_LOCK=TRUE
+export HIST_FIND_NO_DUPS=TRUE
+export HIST_REDUCE_BLANKS=TRUE
+export HIST_SAVE_NO_DUPS=TRUE
+export HIST_VERIFY=TRUE
+
+# Setup Dev environment
+export DEFAULT_PYTHON_VERSION=2.7
+export DEFAULT_PYTHON_PREFIX=~/Library/Python/${DEFAULT_PYTHON_VERSION}
+export DEFAULT_PYTHON_BIN=${DEFAULT_PYTHON_PREFIX}/bin
+export DEFAULT_PYTHON_SITE_PACKAGES=${DEFAULT_PYTHON_PREFIX}/lib/python${DEFAULT_PYTHON_VERSION}/site-packages
+export PATH=~/bin:${DEFAULT_PYTHON_BIN}:/usr/local/bin:${PATH}
+export MYPYTHONPATH=${DEFAULT_PYTHON_SITE_PACKAGES}
+export PYTHONPATH=$MYPYTHONPATH
+
+alias pip_install_local='pip install --install-option="--prefix=${DEFAULT_PYTHON_PREFIX}"'
+
+export VIRTUALENV_DISTRIBUTE=TRUE
+alias mkvirtualenv='mkvirtualenv --system-site-packages'
+
+export JYTHON_HOME=/usr/local/Cellar/jython/2.5.3/libexec

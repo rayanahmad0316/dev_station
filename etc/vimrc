@@ -1,0 +1,11 @@
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set autoindent
+set smarttab
+filetype indent on
+filetype on
+filetype plugin on
+set expandtab
+syntax on
+set background=dark
