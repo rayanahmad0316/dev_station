@@ -40,7 +40,6 @@ export PYTHONPATH=$MYPYTHONPATH
 
 alias pip_install_local='pip install --install-option="--prefix=${DEFAULT_PYTHON_PREFIX}"'
 
-export VIRTUALENV_DISTRIBUTE=TRUE
 alias mkvirtualenv='mkvirtualenv --system-site-packages'
 
 export JYTHON_HOME=/usr/local/Cellar/jython/2.5.3/libexec
