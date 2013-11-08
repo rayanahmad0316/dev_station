@@ -1,2 +1,9 @@
 export WORKON_HOME=~/work/virtualenvs
-#source /usr/local/bin/virtualenvwrapper.sh
+source virtualenvwrapper.sh
+
+stty erase ^H
+case $TERM in
+    xterm*)
+        precmd () {print -Pn "\e]0;%n@%m: %~\a"}
+        ;;
+esac
