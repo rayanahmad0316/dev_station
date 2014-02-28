@@ -34,13 +34,18 @@ for entry_date, hours in ((
         datetime.datetime.strptime(item["day_entry"]["spent_at"], "%Y-%m-%d"),
         item["day_entry"]["hours"],
         ) for item in data):
+
+    if entry_date.date() == today:
+        # We are only interested in time from days in the past
+        continue
+
     month_key = datetime.date(entry_date.year, entry_date.month, 1)
 
     actual_time_dict[month_key] = actual_time_dict.get(month_key, 0) + hours
 
 expected_time_dict = {}
 cur_date = HIRE_DATE
-while cur_date < today:
+while cur_date < today: # Only calculate expected time for days in the past
     if cur_date.weekday() in WEEKDAY_NUMS:
         month_key = datetime.date(cur_date.year, cur_date.month, 1)
         expected_time_dict[month_key] = expected_time_dict.get(month_key, 0
