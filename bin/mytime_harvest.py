@@ -55,7 +55,8 @@ while cur_date < today: # Only calculate expected time for days in the past
 total_actual_hours = 0
 total_expected_hours = 0
 
-for month_key, expected_hours in expected_time_dict.iteritems():
+for month_key, expected_hours in sorted(expected_time_dict.iteritems(),
+        key=lambda x: x[0]):
     actual_hours = actual_time_dict.get(month_key, 0)
     month_diff = actual_hours - expected_hours
 
