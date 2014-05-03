@@ -55,8 +55,9 @@ while cur_date < today: # Only calculate expected time for days in the past
 total_actual_hours = 0
 total_expected_hours = 0
 
-for month_key, expected_hours in sorted(expected_time_dict.iteritems(),
-        key=lambda x: x[0]):
+for index, expected_time_item in enumerate(sorted(
+        expected_time_dict.iteritems(), key=lambda x: x[0])):
+    month_key, expected_hours = expected_time_item
     actual_hours = actual_time_dict.get(month_key, 0)
     month_diff = actual_hours - expected_hours
 
@@ -65,6 +66,7 @@ for month_key, expected_hours in sorted(expected_time_dict.iteritems(),
     total_diff = total_actual_hours - total_expected_hours
 
     print
+    print "-" * 26
     print "{:%Y, %B}:".format(month_key)
     print "         Expected: {expected_hours:>7.2f}".format(
         expected_hours=expected_hours)
@@ -72,9 +74,11 @@ for month_key, expected_hours in sorted(expected_time_dict.iteritems(),
         actual_hours=actual_hours)
     print "       Difference: {month_diff:>7.2f}".format(month_diff=month_diff)
 
-print
-print "   Total Expected: {total_expected_hours:>7.2f}".format(
-    total_expected_hours=total_expected_hours)
-print "     Total Actual: {total_actual_hours:>7.2f}".format(
-    total_actual_hours=total_actual_hours)
-print " Total Difference: {total_diff:>7.2f}".format(total_diff=total_diff)
+    if index > 0:
+        print
+        print "   Total Expected: {total_expected_hours:>7.2f}".format(
+            total_expected_hours=total_expected_hours)
+        print "     Total Actual: {total_actual_hours:>7.2f}".format(
+            total_actual_hours=total_actual_hours)
+        print " Total Difference: {total_diff:>7.2f}".format(
+            total_diff=total_diff)
