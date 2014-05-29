@@ -21,7 +21,8 @@ WEEKDAY_NUMS = range(5)
 now = datetime.datetime.now()
 today = now.date()
 
-pto_filename = "{}_pto.json".format(os.path.splitext(sys.argv[0])[0])
+pto_filename = "{}_pto.json".format(os.path.splitext(os.path.realpath(
+    sys.argv[0]))[0])
 if os.path.exists(pto_filename):
     with open(pto_filename) as pto_file:
         raw_pto_dict = json.load(pto_file)
