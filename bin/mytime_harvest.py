@@ -112,7 +112,7 @@ for index, expected_time_item in enumerate(sorted(
     if pto_items:
         print
         for pto_date, pto_description, pto_item_hours in pto_items:
-            print "   {:14}: {:>7.2f} {}".format("{:%d, %A}".format(pto_date),
+            print "    {:13}: {:>7.2f} {}".format("{:%d, %A}".format(pto_date),
                 pto_item_hours, pto_description)
         print "              PTO: {pto_hours:>7.2f}\n".format(
             pto_hours=pto_hours)
