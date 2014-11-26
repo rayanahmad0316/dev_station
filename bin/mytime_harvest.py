@@ -86,6 +86,7 @@ while cur_date < today: # Only calculate expected time for days in the past
 
 total_actual_hours = 0
 total_pto_hours = 0
+total_effective_hours = 0
 total_expected_hours = 0
 
 for index, expected_time_item in enumerate(sorted(
@@ -93,15 +94,17 @@ for index, expected_time_item in enumerate(sorted(
     month_key, expected_hours = expected_time_item
     actual_hours = actual_time_dict.get(month_key, 0)
     pto_hours = pto_time_dict.get(month_key, 0)
-    month_diff = (actual_hours + pto_hours) - expected_hours
+    effective_hours = actual_hours + pto_hours
+    month_diff = effective_hours - expected_hours
 
     total_actual_hours += actual_hours
     total_pto_hours += pto_hours
+    total_effective_hours += effective_hours
     total_expected_hours += expected_hours
-    total_diff = (total_actual_hours + total_pto_hours) - total_expected_hours
+    total_diff = total_effective_hours - total_expected_hours
 
     print
-    print "-" * 26
+    print "=" * 26
     print "{:%Y, %B}:".format(month_key)
     print "         Expected: {expected_hours:>7.2f}".format(
         expected_hours=expected_hours)
@@ -114,18 +117,26 @@ for index, expected_time_item in enumerate(sorted(
         for pto_date, pto_description, pto_item_hours in pto_items:
             print "    {:13}: {:>7.2f} {}".format("{:%d, %A}".format(pto_date),
                 pto_item_hours, pto_description)
-        print "              PTO: {pto_hours:>7.2f}\n".format(
+        print "              PTO: {pto_hours:>7.2f}".format(
             pto_hours=pto_hours)
+        print
+        print "        Effective: {effective_hours:>7.2f}".format(effective_hours=effective_hours)
 
     print "       Difference: {month_diff:>7.2f}".format(month_diff=month_diff)
 
     if index > 0:
         print
-        print "   Total Expected: {total_expected_hours:>7.2f}".format(
-            total_expected_hours=total_expected_hours)
-        print "     Total Actual: {total_actual_hours:>7.2f}".format(
-            total_actual_hours=total_actual_hours)
+        print "-" * 26
         print "        Total PTO: {total_pto_hours:>7.2f}".format(
             total_pto_hours=total_pto_hours)
+        print
+        print "   Total Expected: {total_expected_hours:>7.2f}".format(
+            total_expected_hours=total_expected_hours)
+        if total_actual_hours == total_effective_hours:
+            print "     Total Actual: {total_actual_hours:>7.2f}".format(
+                total_actual_hours=total_actual_hours)
+        else:
+            print "  Total Effective: {total_effective_hours:>7.2f}".format(
+                total_effective_hours=total_effective_hours)
         print " Total Difference: {total_diff:>7.2f}".format(
             total_diff=total_diff)
