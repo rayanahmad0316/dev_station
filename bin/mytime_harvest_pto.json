@@ -2,7 +2,12 @@
     "holiday": {
         "2014-05-26": "Memorial Day",
         "2014-07-04": "Independence Day",
-        "2014-09-01": "Labor Day"
+        "2014-09-01": "Labor Day",
+        "2014-11-27": "Thanksgiving",
+        "2014-11-28": {
+            "hours": 4,
+            "description": "Black Friday (Unofficial)"
+        }
     },
     "sick": {
     },

@@ -32,12 +32,19 @@ else:
 pto_dict = {}
 pto_time_dict = {}
 for pto_type in ("holiday", "sick", "vacation"):
-    for raw_pto_date, raw_description in raw_pto_dict.get(pto_type, {}
+    for raw_pto_date, pto_value in raw_pto_dict.get(pto_type, {}
             ).iteritems():
         pto_date = datetime.datetime.strptime(raw_pto_date, "%Y-%m-%d").date()
         if pto_date >= today:
             # We are only interested in time from days in the past
             continue
+
+        if isinstance(pto_value, dict):
+            pto_hours = pto_value["hours"]
+            raw_description = pto_value["description"]
+        else:
+            pto_hours = EXPECTED_HOURS_PER_DAY
+            raw_description = pto_value
 
         pto_description = ": ".join(filter(None, (pto_type.title(),
             raw_description)))
@@ -45,10 +52,10 @@ for pto_type in ("holiday", "sick", "vacation"):
         month_key = datetime.date(pto_date.year, pto_date.month, 1)
 
         pto_list = pto_dict.setdefault(month_key, [])
-        pto_list.append((pto_date, pto_description, EXPECTED_HOURS_PER_DAY))
+        pto_list.append((pto_date, pto_description, pto_hours))
 
         pto_time_dict[month_key] = pto_time_dict.get(month_key, 0
-            ) + EXPECTED_HOURS_PER_DAY
+            ) + pto_hours 
 
 response = requests.get("http://wandrsmith.harvestapp.com/projects/4871664"
     "/entries?from={from_date}&to={to_date}".format(
