@@ -4,6 +4,8 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 export PROJECT_HOME=~/work/projects
 
+source <(boot2docker shellinit 2> /dev/null)
+
 
 stty erase ^H
 case $TERM in
