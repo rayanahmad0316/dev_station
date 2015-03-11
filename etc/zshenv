@@ -43,4 +43,6 @@ alias pip_install_local='pip install --install-option="--prefix=${DEFAULT_USER_P
 alias mkvirtualenv='mkvirtualenv --system-site-packages'
 alias easy_install='easy_install --user'
 
+alias docker='boot2docker_wrapper.sh'
+
 export JYTHON_HOME=/usr/local/Cellar/jython/2.5.3/libexec

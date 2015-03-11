@@ -4,12 +4,6 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 export PROJECT_HOME=~/work/projects
 
-if [ "`boot2docker status`" != "running" ]; then
-    echo "Starting boot2docker VM ..."
-    boot2docker start > /dev/null 2>&1
-fi
-source <(boot2docker shellinit 2> /dev/null)
-
 stty erase ^H
 case $TERM in
     xterm*)
