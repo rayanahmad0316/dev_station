@@ -1,0 +1,2 @@
+#/bin/sh
+sudo screen -d -m -S mtr mtr -b -o "LSDR  NBAWVG  JMXI" $1 
