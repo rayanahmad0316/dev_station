@@ -4,7 +4,6 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 export PROJECT_HOME=~/work/projects
 
-
 stty erase ^H
 case $TERM in
     xterm*)

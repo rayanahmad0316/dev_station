@@ -1,0 +1,32 @@
+{
+    "holiday": {
+        "2014-05-26": "Memorial Day",
+        "2014-07-04": "Independence Day",
+        "2014-09-01": "Labor Day",
+        "2014-11-27": "Thanksgiving",
+        "2014-11-28": {
+            "hours": 4,
+            "description": "Black Friday (Unofficial)"
+        },
+        "2014-12-25": "Christmas",
+        "2014-12-26": "Day After Christmas",
+        "2015-01-01": "New Years Day"
+    },
+    "sick": {
+    },
+    "vacation": {
+        "2014-06-20": "Family Visiting",
+        "2014-06-23": "Family Visiting",
+
+        "2014-07-28": "MTTS",
+        "2014-07-29": "MTTS",
+
+        "2014-12-19": "Christmas Vacation",
+        "2014-12-22": "Christmas Vacation",
+        "2014-12-23": "Christmas Vacation",
+        "2014-12-24": "Christmas Vacation",
+        "2014-12-29": "Christmas Vacation",
+        "2014-12-30": "Christmas Vacation",
+        "2014-12-31": "Christmas Vacation"
+    }
+}
