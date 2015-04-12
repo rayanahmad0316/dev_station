@@ -1,0 +1,4 @@
+Host vps 
+    HostName vps.wandrsmith.net 
+    Port 2207 
+    User root 
