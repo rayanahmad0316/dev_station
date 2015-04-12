@@ -29,11 +29,11 @@ if args.vm_name_match:
             vm_names.append(entire_vm_name)
 
     if len(vm_names) < 1:
-        raise argparse.ArgumentError("VM matching '{}' not found.".format(
+        raise argparse.ArgumentError(None, "VM matching '{}' not found.".format(
             vm_prefix))
     elif len(vm_names) > 1:
-        raise argparse.ArgumentError("Multiple VMs matching '{} found.".format(
-            vm_prefix))
+        raise argparse.ArgumentError(None, "Multiple VMs matching '{}' found:\n\n{}\n\n".format(
+            vm_prefix, "\n".join(vm_names)))
     else:
         vm_name = vm_names[0]
 
