@@ -1,2 +1,6 @@
 #/bin/sh
-sudo screen -d -m -S mtr mtr -b -o "LSDR  NBAWVG  JMXI" $1 
+if [ $1 ]; then 
+    sudo screen -d -m -S mtr mtr -T -P 80 -Z 2 -b -o "LSDR  NBAWVG  JMXI" $1 
+else
+    echo "ERROR: Destination host is required."
+fi
