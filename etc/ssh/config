@@ -1,4 +1,7 @@
 Host vps 
     HostName vps.wandrsmith.net 
     Port 2207 
-    User root 
+    User wandrsmith 
+Host wandrsmith 
+    HostName wandrsmith-wsmith323.rhcloud.com  
+    User 559faa5e4382eced55000137 
