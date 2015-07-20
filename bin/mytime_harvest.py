@@ -8,9 +8,11 @@ import sys
 
 import requests
 
+PROJECT_ID = "8503786"
+
 ONE_DAY = datetime.timedelta(days=1)
 
-HIRE_DATE = datetime.date(2014, 1, 20)
+HIRE_DATE = datetime.date(2015, 7, 20)
 
 EXPECTED_HOURS_PER_DAY = 8
 
@@ -57,8 +59,8 @@ for pto_type in ("holiday", "sick", "vacation"):
         pto_time_dict[month_key] = pto_time_dict.get(month_key, 0
             ) + pto_hours 
 
-response = requests.get("http://wandrsmith.harvestapp.com/projects/4871664"
-    "/entries?from={from_date}&to={to_date}".format(
+response = requests.get("http://wandrsmith.harvestapp.com/projects/{project_id}"
+    "/entries?from={from_date}&to={to_date}".format(project_id=PROJECT_ID,
     from_date=HIRE_DATE.strftime(DATE_FORMAT_HARVEST_ENTRIES),
     to_date=today.strftime(DATE_FORMAT_HARVEST_ENTRIES)),
     auth=('warren@wandrsmith.net', getpass.getpass()), headers={
