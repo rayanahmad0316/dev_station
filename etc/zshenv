@@ -1,9 +1,9 @@
 # Configure Prompt
-export PS1="
+export PROMPT="
 %B%U%n%u%b on %m via %y
 [%D{%m/%d/%Y %I:%M:%S %p}] %B%U%~%u%b
 %!: %# "
-export MYPS1=$PS1
+export MYPROMPT=$PROMPT
 
 export CLICOLOR=TRUE
 export VISUAL=vim
@@ -12,6 +12,7 @@ export VISUAL=vim
 export HISTFILE=~/.zsh_history
 export HISTSIZE=200000
 export SAVEHIST=100000
+
 setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY
@@ -44,11 +45,8 @@ export ALT_USER_PYTHON_BIN_PATH=${ALT_USER_PYTHON_PREFIX}/bin
 
 export ALT_USER_PYTHON_SITE_PACKAGES=${ALT_USER_PYTHON_PREFIX}/lib/python${ALT_PYTHON_VERSION}/site-packages
 
-# Path
-export PATH=~/bin:${DEFAULT_USER_PYTHON_BIN_PATH}:${DEFAULT_SYSTEM_PYTHON_BIN_PATH}:${ALT_USER_PYTHON_BIN_PATH}:${ALT_SYSTEM_PYTHON_BIN_PATH}:/usr/local/sbin:/usr/local/bin:/usr/local/mysql/bin:${PATH}
-
-export MYPYTHONPATH=${DEFAULT_USER_PYTHON_SITE_PACKAGES}
-export PYTHONPATH=$MYPYTHONPATH
+export PYTHONPATH=${DEFAULT_USER_PYTHON_SITE_PACKAGES}
+export MYPYTHONPATH=$PYTHONPATH
 
 alias pip_install_local='pip install --install-option="--prefix=${DEFAULT_USER_PYTHON_PREFIX}"'
 
