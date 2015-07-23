@@ -1,23 +1,15 @@
 
-export WORKON_HOME=~/work/virtualenvs
-source virtualenvwrapper.sh
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
-export PIP_RESPECT_VIRTUALENV=true
-export PROJECT_HOME=~/work/projects
-
 source /usr/local/opt/autoenv/activate.sh
 
-autoload compinit; compinit
-eval "$(vex --shell-config zsh)"
+export WORKON_HOME=~/work/virtualenvs
+export PROJECT_HOME=~/work/projects
 
+source vexwrapper.zsh
+
+# Fixup terminal
 stty erase ^H
 case $TERM in
     xterm*)
         precmd () {print -Pn "\e]0;%n@%m: %~\a"}
         ;;
 esac
-
-if [ -n "$VEX_SUBPROCESS" ]; then
-    workon ${VIRTUAL_ENV##*/}
-    cdproject
-fi
