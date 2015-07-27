@@ -3,7 +3,6 @@ export PS1="
 %B%U%n%u%b on %m via %y
 [%D{%m/%d/%Y %I:%M:%S %p}] %B%U%~%u%b
 %!: %# "
-export MYPROMPT="${PS1}"
 
 export CLICOLOR=TRUE
 export VISUAL=vim
@@ -24,35 +23,7 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_VERIFY
 
 # Setup Dev environment
-export DEFAULT_PYTHON_VERSION=2.7
-export ALT_PYTHON_VERSION=3.4
-
-# Default Python
-export DEFAULT_SYSTEM_PYTHON_PREFIX=/Library/Frameworks/Python.framework/Versions/${DEFAULT_PYTHON_VERSION}
-export DEFAULT_USER_PYTHON_PREFIX=~/Library/Python/${DEFAULT_PYTHON_VERSION}
-
-export DEFAULT_SYSTEM_PYTHON_BIN_PATH=${DEFAULT_SYSTEM_PYTHON_PREFIX}/bin
-export DEFAULT_USER_PYTHON_BIN_PATH=${DEFAULT_USER_PYTHON_PREFIX}/bin
-
-export DEFAULT_USER_PYTHON_SITE_PACKAGES=${DEFAULT_USER_PYTHON_PREFIX}/lib/python${DEFAULT_PYTHON_VERSION}/site-packages
-
-# Alt Python
-export ALT_SYSTEM_PYTHON_PREFIX=/Library/Frameworks/Python.framework/Versions/${ALT_PYTHON_VERSION}
-export ALT_USER_PYTHON_PREFIX=~/Library/Python/${ALT_PYTHON_VERSION}
-
-export ALT_SYSTEM_PYTHON_BIN_PATH=${ALT_SYSTEM_PYTHON_PREFIX}/bin
-export ALT_USER_PYTHON_BIN_PATH=${ALT_USER_PYTHON_PREFIX}/bin
-
-export ALT_USER_PYTHON_SITE_PACKAGES=${ALT_USER_PYTHON_PREFIX}/lib/python${ALT_PYTHON_VERSION}/site-packages
-
-export PYTHONPATH=${DEFAULT_USER_PYTHON_SITE_PACKAGES}
-export MYPYTHONPATH=$PYTHONPATH
-
-alias pip_install_local='pip install --install-option="--prefix=${DEFAULT_USER_PYTHON_PREFIX}"'
-
 alias virtualenv='virtualenv --system-site-packages'
 alias easy_install='easy_install --user'
-
-#alias docker='boot2docker_wrapper.sh'
 
 export JYTHON_HOME=/usr/local/Cellar/jython/2.5.3/libexec

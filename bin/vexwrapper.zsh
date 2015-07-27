@@ -68,6 +68,7 @@ if [ -n "$VIRTUAL_ENV" ]; then
         if [ -f "$venv_dotproject" ]; then
             venv_project=`cat "$venv_dotproject"` 
             if [ -d "$venv_project" ]; then
+                export VIRTUAL_ENV_PROJECT="$venv_project"
                 cd "$venv_project"
             elif [ -n "$quiet" ]; then
                 return 0
