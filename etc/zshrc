@@ -1,8 +1,8 @@
 
 source /usr/local/opt/autoenv/activate.sh
 
-export WORKON_HOME=~/work/virtualenvs
-export PROJECT_HOME=~/work/projects
+export VIRTUAL_ENV_ROOT=~/work/virtualenvs
+export PROJECT_ROOT=~/work/projects
 
 source vexwrapper.zsh
 

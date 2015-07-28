@@ -3,12 +3,14 @@
 # Useful zsh functions for Python virtual environments using vex
 #
 
+export WORKON_HOME=$VIRTUAL_ENV_ROOT
+
 function workon {
     vex "$@"
 }
 
 function mkv {
-    venv="$WORKON_HOME/$1"
+    venv="$VIRTUAL_ENV_ROOT/$1"
     if [ ! -d "$venv" ]; then
         virtualenv "$venv" 
     else
@@ -16,14 +18,22 @@ function mkv {
         return 1
     fi 
 }
-  
-function lsv {
-    ls $WORKON_HOME 
+
+function lsvr {
+    ls "$VIRTUAL_ENV_ROOT"
 }
-  
+
+function cdvr {
+    cd "$VIRTUAL_ENV_ROOT"
+}
+
+function cdpr {
+    cd "$PROJECT_ROOT"
+}
+
 function _create_project {
     if [ -n "$2" ]; then
-        cd "$PROJECT_HOME"
+        cd "$PROJECT_ROOT"
         git clone "$2" "$1"
         cd - >/dev/null 
     else
@@ -32,8 +42,8 @@ function _create_project {
 }
 
 function mkp {
-    venv_dotproject="$WORKON_HOME/$1/.project" 
-    venv_project="$PROJECT_HOME/$1"
+    venv_dotproject="$VIRTUAL_ENV_ROOT/$1/.project" 
+    venv_project="$PROJECT_ROOT/$1"
     if [ ! -d "$venv_project" ]; then
         mkv "$@" && echo "$venv_project" > "$venv_dotproject" && _create_project "$@"    
     else
@@ -90,7 +100,7 @@ if [ -n "$VIRTUAL_ENV" ]; then
     #
     # Run postactivate scripts
     #
-    GLOBAL_POSTACTIVATE="$WORKON_HOME/postactivate" 
+    GLOBAL_POSTACTIVATE="$VIRTUAL_ENV_ROOT/postactivate" 
     if [ -f "$GLOBAL_POSTACTIVATE" ]; then
         source "$GLOBAL_POSTACTIVATE"
     fi
@@ -107,7 +117,7 @@ if [ -n "$VIRTUAL_ENV" ]; then
 
 else
     function rmv {
-        venv="$WORKON_HOME/$1"
+        venv="$VIRTUAL_ENV_ROOT/$1"
         if [ -d "$venv" ]; then
             rm -rf "$venv"
         else
@@ -120,7 +130,7 @@ fi
 # Configure ZSH completion
 autoload compinit; compinit
 function _virtualenvs {
-    reply=( $(cd $WORKON_HOME && ls) )
+    reply=( $(cd $VIRTUAL_ENV_ROOT && ls) )
 }
 function _cdv_complete {
     reply=( $(cdv && ls -d ${1}*) )
