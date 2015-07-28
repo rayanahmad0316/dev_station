@@ -98,6 +98,11 @@ if [ -n "$VIRTUAL_ENV" ]; then
 ($VIRTUAL_ENV_NAME)$PS1"
 
     #
+    # Change into project directory
+    #
+    cdp -q
+
+    #
     # Run postactivate scripts
     #
     GLOBAL_POSTACTIVATE="$VIRTUAL_ENV_ROOT/postactivate" 
@@ -110,12 +115,9 @@ if [ -n "$VIRTUAL_ENV" ]; then
         source "$VENV_POSTACTIVATE"
     fi
 
-    #
-    # Change into project directory
-    #
-    cdp -q
-
 else
+    if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
     function rmv {
         venv="$VIRTUAL_ENV_ROOT/$1"
         if [ -d "$venv" ]; then

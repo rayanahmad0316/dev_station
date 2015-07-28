@@ -1,0 +1,6 @@
+# system-wide environment settings for zsh(1)
+if [ -z "$VIRTUAL_ENV" ]; then
+    if [ -x /usr/libexec/path_helper ]; then
+        eval `/usr/libexec/path_helper -s`
+    fi
+fi
