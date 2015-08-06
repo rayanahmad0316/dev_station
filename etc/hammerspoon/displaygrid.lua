@@ -23,12 +23,18 @@ function DisplayGrid:rectForGrid(screen, startRow, startCol, endRow, endCol)
     )
     return rect
 end
-function DisplayGrid:positionCurrentWindow(startRow, startCol, endRow, endCol)
-    local window = hs.window.focusedWindow()
-    local screen = window:screen()
+function DisplayGrid:positionWindow(window, screen, startRow, startCol, endRow, endCol)
+    if screen == nil then
+        screen = window:screen()
+    end
 
     window:setFrame(self:rectForGrid(screen, startRow, startCol, endRow, endCol))
     window:moveToScreen(screen)
+end
+function DisplayGrid:positionCurrentWindow(startRow, startCol, endRow, endCol)
+    self:positionWindow(hs.window.focusedWindow(), nil, startRow, startCol, endRow, endCol)
+end
+function DisplayGrid:positionAppWindow(appName, role, screen, startRow, startCol, endRow, endCol)
 end
 function DisplayGrid:bindKeys(mods, keys, startRow, startCol, endRow, endCol)
     bindKeys(mods, keys, function()

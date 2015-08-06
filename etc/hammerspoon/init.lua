@@ -41,6 +41,31 @@ hs.hotkey.bind({"cmd"}, "Left", function()
     hs.window.focusedWindow():moveOneScreenWest()
 end)
 
+function layout()
+    local comsScreen = hs.screen.findByName("Color LCD")
+    local mainScreen = comsScreen:toEast()
+    local secondaryScreen = mainScreen:toEast()
+
+    hs.alert.show("comsScreen: " .. comsScreen:name())
+    hs.alert.show("mainScreen: " .. mainScreen:name())
+    hs.alert.show("secondaryScreen: " .. secondaryScreen:name())
+
+    hs.layout.apply({
+        {"Calendar", nil, comsScreen, nil, grid:rectForGrid(comsScreen, 1, 1, 5, 10), nil},
+        {"Mail", nil, comsScreen, nil, grid:rectForGrid(comsScreen, 1, 1, 5, 10), nil},
+        {"Messages", nil, comsScreen, nil, grid:rectForGrid(comsScreen, 6, 1, 10, 10), nil},
+        {"Slack", nil, comsScreen, nil, grid:rectForGrid(comsScreen, 6, 1, 10, 10), nil},
+
+        {"Terminal", nil, mainScreen, nil, grid:rectForGrid(mainScreen, 1, 1, 4, 10), nil},
+        {"SourceTree", nil, mainScreen, nil, grid:rectForGrid(mainScreen, 5, 1, 10, 10), nil},
+
+        {"PyCharm", nil, secondaryScreen, nil, grid:rectForGrid(secondaryScreen, 1, 1, 10, 10), nil},
+        {"Google Chrome", nil, secondaryScreen, nil, grid:rectForGrid(secondaryScreen, 1, 1, 10, 10), nil},
+    })
+end
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "L", layout)
+--layout()
+
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
   hs.reload()
 end)
