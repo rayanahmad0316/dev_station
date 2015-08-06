@@ -1,36 +1,34 @@
-require 'displaygrid'
+require 'utils'
 
-grid = DisplayGrid(10, 10)
+bindKeysMoveFocusedWindow({"cmd"}, {"5", "pad5"}, 0, 0, 1, 1)
+bindKeysMoveFocusedWindow({"cmd"}, {"1", "pad1"}, 0, 0.5, 0.5, 1)
+bindKeysMoveFocusedWindow({"cmd"}, {"4", "pad4"}, 0, 0, 0.5, 1)
+bindKeysMoveFocusedWindow({"cmd"}, {"7", "pad7"}, 0, 0, 0.5, 0.5)
+bindKeysMoveFocusedWindow({"cmd"}, {"8", "pad8"}, 0, 0, 1, 0.5)
+bindKeysMoveFocusedWindow({"cmd"}, {"9", "pad9"}, 0.5, 0, 1, 0.5)
+bindKeysMoveFocusedWindow({"cmd"}, {"6", "pad6"}, 0.5, 0, 1, 1)
+bindKeysMoveFocusedWindow({"cmd"}, {"3", "pad3"}, 0.5, 0.5, 1, 1)
+bindKeysMoveFocusedWindow({"cmd"}, {"2", "pad2"}, 0, 0.5, 1, 1)
 
-grid:bindKeys({"cmd"}, {"5", "pad5"}, 1, 1, 10, 10)
-grid:bindKeys({"cmd"}, {"1", "pad1"}, 1, 6, 5, 10)
-grid:bindKeys({"cmd"}, {"4", "pad4"}, 1, 1, 5, 10)
-grid:bindKeys({"cmd"}, {"7", "pad7"}, 1, 1, 5, 5)
-grid:bindKeys({"cmd"}, {"8", "pad8"}, 1, 1, 10, 5)
-grid:bindKeys({"cmd"}, {"9", "pad9"}, 6, 1, 10, 5)
-grid:bindKeys({"cmd"}, {"6", "pad6"}, 6, 1, 10, 10)
-grid:bindKeys({"cmd"}, {"3", "pad3"}, 6, 6, 10, 10)
-grid:bindKeys({"cmd"}, {"2", "pad2"}, 1, 6, 10, 10)
+bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"1"}, 0, 0, 0.1, 1)
+bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"2"}, 0, 0, 0.2, 1)
+bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"3"}, 0, 0, 0.3, 1)
+bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"4"}, 0, 0, 0.4, 1)
+bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"5"}, 0, 0, 0.5, 1)
+bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"6"}, 0, 0, 0.6, 1)
+bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"7"}, 0, 0, 0.7, 1)
+bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"8"}, 0, 0, 0.8, 1)
+bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"9"}, 0, 0, 0.9, 1)
 
-grid:bindKeys({"ctrl", "alt", "cmd"}, {"1"}, 10, 1, 10, 10)
-grid:bindKeys({"ctrl", "alt", "cmd"}, {"2"}, 9, 1, 10, 10)
-grid:bindKeys({"ctrl", "alt", "cmd"}, {"3"}, 8, 1, 10, 10)
-grid:bindKeys({"ctrl", "alt", "cmd"}, {"4"}, 7, 1, 10, 10)
-grid:bindKeys({"ctrl", "alt", "cmd"}, {"5"}, 6, 1, 10, 10)
-grid:bindKeys({"ctrl", "alt", "cmd"}, {"6"}, 5, 1, 10, 10)
-grid:bindKeys({"ctrl", "alt", "cmd"}, {"7"}, 4, 1, 10, 10)
-grid:bindKeys({"ctrl", "alt", "cmd"}, {"8"}, 3, 1, 10, 10)
-grid:bindKeys({"ctrl", "alt", "cmd"}, {"9"}, 2, 1, 10, 10)
-
-grid:bindKeys({"shift", "ctrl", "alt"}, {"1"}, 1, 1, 1, 10)
-grid:bindKeys({"shift", "ctrl", "alt"}, {"2"}, 1, 1, 2, 10)
-grid:bindKeys({"shift", "ctrl", "alt"}, {"3"}, 1, 1, 3, 10)
-grid:bindKeys({"shift", "ctrl", "alt"}, {"4"}, 1, 1, 4, 10)
-grid:bindKeys({"shift", "ctrl", "alt"}, {"5"}, 1, 1, 5, 10)
-grid:bindKeys({"shift", "ctrl", "alt"}, {"6"}, 1, 1, 6, 10)
-grid:bindKeys({"shift", "ctrl", "alt"}, {"7"}, 1, 1, 7, 10)
-grid:bindKeys({"shift", "ctrl", "alt"}, {"8"}, 1, 1, 8, 10)
-grid:bindKeys({"shift", "ctrl", "alt"}, {"9"}, 1, 1, 9, 10)
+bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"1"}, 0.9, 0, 0.1, 1)
+bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"2"}, 0.8, 0, 0.2, 1)
+bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"3"}, 0.7, 0, 0.3, 1)
+bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"4"}, 0.6, 0, 0.4, 1)
+bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"5"}, 0.5, 0, 0.5, 1)
+bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"6"}, 0.4, 0, 0.6, 1)
+bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"7"}, 0.3, 0, 0.7, 1)
+bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"8"}, 0.2, 0, 0.8, 1)
+bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"9"}, 0.1, 0, 0.9, 1)
 
 hs.window.animationDuration = 0
 
@@ -42,29 +40,28 @@ hs.hotkey.bind({"cmd"}, "Left", function()
 end)
 
 function layout()
-    local comsScreen = hs.screen.findByName("Color LCD")
-    local mainScreen = comsScreen:toEast()
-    local secondaryScreen = mainScreen:toEast()
-
-    hs.alert.show("comsScreen: " .. comsScreen:name())
-    hs.alert.show("mainScreen: " .. mainScreen:name())
-    hs.alert.show("secondaryScreen: " .. secondaryScreen:name())
+    local laptopScreen = hs.screen.findByName("Color LCD")
+    local comsScreen = laptopScreen
+    local mainScreen = comsScreen:toEast() or comsScreen
+    local secondaryScreen = mainScreen:toEast() or mainScreen
 
     hs.layout.apply({
-        {"Calendar", nil, comsScreen, nil, grid:rectForGrid(comsScreen, 1, 1, 5, 10), nil},
-        {"Mail", nil, comsScreen, nil, grid:rectForGrid(comsScreen, 1, 1, 5, 10), nil},
-        {"Messages", nil, comsScreen, nil, grid:rectForGrid(comsScreen, 6, 1, 10, 10), nil},
-        {"Slack", nil, comsScreen, nil, grid:rectForGrid(comsScreen, 6, 1, 10, 10), nil},
+        {"Calendar", nil, comsScreen, hs.geometry.rect(0, 0, 0.5, 1), nil, nil},
+        {"Mail", nil, comsScreen, hs.geometry.rect(0, 0, 0.5, 1), nil, nil},
+        {"Messages", nil, comsScreen, hs.geometry.rect(0.5, 0, 0.5, 1), nil, nil},
+        {"Slack", nil, comsScreen, hs.geometry.rect(0.5, 0, 0.5, 1), nil, nil},
 
-        {"Terminal", nil, mainScreen, nil, grid:rectForGrid(mainScreen, 1, 1, 4, 10), nil},
-        {"SourceTree", nil, mainScreen, nil, grid:rectForGrid(mainScreen, 5, 1, 10, 10), nil},
+        {"Terminal", nil, mainScreen, hs.geometry.rect(0, 0, 0.4, 1), nil, nil},
+        {"SourceTree", nil, mainScreen, hs.geometry.rect(0.4, 0, 0.6, 1), nil, nil},
+        {"MySQLWorkbench", nil, mainScreen, hs.geometry.rect(0.4, 0, 0.6, 1), nil, nil},
 
-        {"PyCharm", nil, secondaryScreen, nil, grid:rectForGrid(secondaryScreen, 1, 1, 10, 10), nil},
-        {"Google Chrome", nil, secondaryScreen, nil, grid:rectForGrid(secondaryScreen, 1, 1, 10, 10), nil},
+        {"PyCharm", nil, secondaryScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil},
+        {"Google Chrome", nil, secondaryScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil},
     })
 end
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "L", layout)
---layout()
+hs.screen.watcher.new(layout):start()
+layout()
 
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
   hs.reload()
