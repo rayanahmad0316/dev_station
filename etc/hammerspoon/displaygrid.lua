@@ -1,3 +1,12 @@
+--The creation of this module was folly on my part.
+--I didn't understand window:moveToUnit().
+--It accomplishes basically the same thing I was
+--trying to acheive here, although the form of
+--its solution is slightly different.
+
+--I keep this simply as an example implementation
+--of a class in Lua, using the class.lua module.
+
 require 'class'
 require 'utils'
 
