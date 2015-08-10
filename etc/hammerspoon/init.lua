@@ -1,43 +1,84 @@
 require 'utils'
 
-bindKeysMoveFocusedWindow({"cmd"}, {"5", "pad5"}, 0, 0, 1, 1)
-bindKeysMoveFocusedWindow({"cmd"}, {"1", "pad1"}, 0, 0.5, 0.5, 1)
-bindKeysMoveFocusedWindow({"cmd"}, {"4", "pad4"}, 0, 0, 0.5, 1)
-bindKeysMoveFocusedWindow({"cmd"}, {"7", "pad7"}, 0, 0, 0.5, 0.5)
-bindKeysMoveFocusedWindow({"cmd"}, {"8", "pad8"}, 0, 0, 1, 0.5)
-bindKeysMoveFocusedWindow({"cmd"}, {"9", "pad9"}, 0.5, 0, 1, 0.5)
-bindKeysMoveFocusedWindow({"cmd"}, {"6", "pad6"}, 0.5, 0, 1, 1)
-bindKeysMoveFocusedWindow({"cmd"}, {"3", "pad3"}, 0.5, 0.5, 1, 1)
-bindKeysMoveFocusedWindow({"cmd"}, {"2", "pad2"}, 0, 0.5, 1, 1)
-
-bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"1"}, 0, 0, 0.1, 1)
-bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"2"}, 0, 0, 0.2, 1)
-bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"3"}, 0, 0, 0.3, 1)
-bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"4"}, 0, 0, 0.4, 1)
-bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"5"}, 0, 0, 0.5, 1)
-bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"6"}, 0, 0, 0.6, 1)
-bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"7"}, 0, 0, 0.7, 1)
-bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"8"}, 0, 0, 0.8, 1)
-bindKeysMoveFocusedWindow({"shift", "ctrl", "alt"}, {"9"}, 0, 0, 0.9, 1)
-
-bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"1"}, 0.9, 0, 0.1, 1)
-bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"2"}, 0.8, 0, 0.2, 1)
-bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"3"}, 0.7, 0, 0.3, 1)
-bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"4"}, 0.6, 0, 0.4, 1)
-bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"5"}, 0.5, 0, 0.5, 1)
-bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"6"}, 0.4, 0, 0.6, 1)
-bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"7"}, 0.3, 0, 0.7, 1)
-bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"8"}, 0.2, 0, 0.8, 1)
-bindKeysMoveFocusedWindow({"ctrl", "alt", "cmd"}, {"9"}, 0.1, 0, 0.9, 1)
-
 hs.window.animationDuration = 0
 
-hs.hotkey.bind({"cmd"}, "Right", function()
-    hs.window.focusedWindow():moveOneScreenEast()
+hs.grid.setGrid({ w = 8, h = 8 })
+hs.grid.setMargins({ w = 0, h = 0 })
+
+hs.hotkey.bind({ "alt", "cmd" }, "Left", function()
+    hs.grid.pushWindowLeft()
 end)
-hs.hotkey.bind({"cmd"}, "Left", function()
-    hs.window.focusedWindow():moveOneScreenWest()
+hs.hotkey.bind({ "alt", "cmd" }, "Right", function()
+    hs.grid.pushWindowRight()
 end)
+hs.hotkey.bind({ "alt", "cmd" }, "Down", function()
+    hs.grid.pushWindowDown()
+end)
+hs.hotkey.bind({ "alt", "cmd" }, "Up", function()
+    hs.grid.pushWindowUp()
+end)
+
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "Right", function()
+    local window = hs.window.focusedWindow()
+    window:moveOneScreenEast()
+    hs.grid.snap(window)
+end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "Left", function()
+    local window = hs.window.focusedWindow()
+    window:moveOneScreenWest()
+    hs.grid.snap(window)
+end)
+
+hs.hotkey.bind({ "cmd" }, "Left", function()
+    hs.grid.resizeWindowThinner()
+end)
+hs.hotkey.bind({ "cmd" }, "Right", function()
+    hs.grid.resizeWindowWider()
+end)
+hs.hotkey.bind({ "cmd" }, "Down", function()
+    hs.grid.resizeWindowTaller()
+end)
+hs.hotkey.bind({ "cmd" }, "Up", function()
+    hs.grid.resizeWindowShorter()
+end)
+hs.hotkey.bind({ "alt" }, "Left", function()
+    local window = hs.window.focusedWindow()
+    maskWindowOperation(window, function()
+        hs.grid.pushWindowLeft(window)
+        hs.grid.resizeWindowWider(window)
+    end)
+end)
+hs.hotkey.bind({ "alt" }, "Right", function()
+    local window = hs.window.focusedWindow()
+    maskWindowOperation(window, function()
+        hs.grid.resizeWindowThinner(window)
+        hs.grid.pushWindowRight(window)
+    end)
+end)
+hs.hotkey.bind({ "alt" }, "Down", function()
+    local window = hs.window.focusedWindow()
+    maskWindowOperation(window, function()
+        hs.grid.resizeWindowShorter(window)
+        hs.grid.pushWindowDown(window)
+    end)
+end)
+hs.hotkey.bind({ "alt" }, "Up", function()
+    local window = hs.window.focusedWindow()
+    maskWindowOperation(window, function()
+        hs.grid.pushWindowUp(window)
+        hs.grid.resizeWindowTaller(window)
+    end)
+end)
+
+bindKeysAdjustWindow({ "cmd" }, { "5", "pad5" }, 0, 0, 8, 8)
+bindKeysAdjustWindow({ "cmd" }, { "1", "pad1" }, 0, 4, 4, 4)
+bindKeysAdjustWindow({ "cmd" }, { "4", "pad4" }, 0, 0, 4, 8)
+bindKeysAdjustWindow({ "cmd" }, { "7", "pad7" }, 0, 0, 4, 4)
+bindKeysAdjustWindow({ "cmd" }, { "8", "pad8" }, 0, 0, 8, 4)
+bindKeysAdjustWindow({ "cmd" }, { "9", "pad9" }, 4, 0, 4, 4)
+bindKeysAdjustWindow({ "cmd" }, { "6", "pad6" }, 4, 0, 4, 8)
+bindKeysAdjustWindow({ "cmd" }, { "3", "pad3" }, 4, 4, 4, 4)
+bindKeysAdjustWindow({ "cmd" }, { "2", "pad2" }, 0, 4, 8, 4)
 
 function layout()
     local laptopScreen = hs.screen.findByName("Color LCD")
@@ -46,24 +87,28 @@ function layout()
     local secondaryScreen = mainScreen:toEast() or mainScreen
 
     hs.layout.apply({
-        {"Calendar", nil, comsScreen, hs.geometry.rect(0, 0, 0.5, 1), nil, nil},
-        {"Mail", nil, comsScreen, hs.geometry.rect(0, 0, 0.5, 1), nil, nil},
-        {"Messages", nil, comsScreen, hs.geometry.rect(0.5, 0, 0.5, 1), nil, nil},
-        {"Slack", nil, comsScreen, hs.geometry.rect(0.5, 0, 0.5, 1), nil, nil},
+        { "Calendar", nil, comsScreen, hs.geometry.rect(0, 0, 0.5, 1), nil, nil },
+        { "Mail", nil, comsScreen, hs.geometry.rect(0, 0, 0.5, 1), nil, nil },
+        { "Messages", nil, comsScreen, hs.geometry.rect(0.5, 0, 0.5, 1), nil, nil },
+        { "Slack", nil, comsScreen, hs.geometry.rect(0.5, 0, 0.5, 1), nil, nil },
 
-        {"Terminal", nil, mainScreen, hs.geometry.rect(0, 0, 0.4, 1), nil, nil},
-        {"SourceTree", nil, mainScreen, hs.geometry.rect(0.4, 0, 0.6, 1), nil, nil},
-        {"MySQLWorkbench", nil, mainScreen, hs.geometry.rect(0.4, 0, 0.6, 1), nil, nil},
+        { "Terminal", nil, mainScreen, hs.geometry.rect(0, 0, 0.375, 1), nil, nil },
+        { "SourceTree", nil, mainScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
+        { "MySQLWorkbench", nil, mainScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
+        { "Google Chrome", "Developer Tools - http://localhost:5000/", mainScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
 
-        {"PyCharm", nil, secondaryScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil},
-        {"Google Chrome", nil, secondaryScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil},
+        { "PyCharm", nil, secondaryScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil },
+        { "Google Chrome", "", secondaryScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil },
     })
+
+    hs.layout.apply({})
 end
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "L", layout)
+
+hs.hotkey.bind({ "cmd" }, "L", layout)
 hs.screen.watcher.new(layout):start()
 layout()
 
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
-  hs.reload()
+hs.hotkey.bind({ "cmd" }, "R", function()
+    hs.reload()
 end)
 hs.alert.show("Config loaded")
