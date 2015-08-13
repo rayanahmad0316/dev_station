@@ -100,6 +100,7 @@ function layout()
         { "Google Chrome", nil, mainScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
         { "SourceTree", nil, mainScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
         { "MySQLWorkbench", nil, mainScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
+        { "iTunes", "iTunes", mainScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
 
         -- Put the iTunes miniplayer in the bottom right corner
         -- in the unused space not taken by the dock
