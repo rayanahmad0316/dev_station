@@ -96,6 +96,7 @@ function layout()
         { "SourceTree", nil, mainScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
         { "MySQLWorkbench", nil, mainScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
         { "Google Chrome", "Developer Tools - http://localhost:5000/", mainScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
+        { "iTunes", "MiniPlayer", mainScreen, nil, nil, hs.geometry.rect(-350, -45, 350, 45) },
 
         { "PyCharm", nil, secondaryScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil },
         { "Google Chrome", "", secondaryScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil },
