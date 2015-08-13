@@ -87,22 +87,31 @@ function layout()
     local secondaryScreen = mainScreen:toEast() or mainScreen
 
     hs.layout.apply({
+        --Communications / Administration Apps
         { "Calendar", nil, comsScreen, hs.geometry.rect(0, 0, 0.5, 1), nil, nil },
         { "Mail", nil, comsScreen, hs.geometry.rect(0, 0, 0.5, 1), nil, nil },
         { "Messages", nil, comsScreen, hs.geometry.rect(0.5, 0, 0.5, 1), nil, nil },
         { "Slack", nil, comsScreen, hs.geometry.rect(0.5, 0, 0.5, 1), nil, nil },
 
+        -- Misc Developer Tools
+        -- Left 3/8
         { "Terminal", nil, mainScreen, hs.geometry.rect(0, 0, 0.375, 1), nil, nil },
+        -- Right 5/8
+        { "Google Chrome", nil, mainScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
         { "SourceTree", nil, mainScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
         { "MySQLWorkbench", nil, mainScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
-        { "Google Chrome", "Developer Tools - http://localhost:5000/", mainScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
+
+        -- Put the iTunes miniplayer in the bottom right corner
+        -- in the unused space not taken by the dock
         { "iTunes", "MiniPlayer", mainScreen, nil, nil, hs.geometry.rect(-350, -45, 350, 45) },
 
+        -- Coding IDE gets a screen all to itself
         { "PyCharm", nil, secondaryScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil },
-        { "Google Chrome", "", secondaryScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil },
     })
 
-    hs.layout.apply({})
+    hs.layout.apply({
+        { "Google Chrome", "Developer Tools - http://localhost:5000/", mainScreen, hs.geometry.rect(0, 0, 0.375, 1), nil, nil },
+    })
 end
 
 hs.hotkey.bind({ "cmd" }, "L", layout)
