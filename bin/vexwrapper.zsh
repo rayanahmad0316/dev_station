@@ -32,13 +32,13 @@ function cdpr {
 }
 
 function _create_project {
+    cd "$PROJECT_ROOT"
     if [ -n "$2" ]; then
-        cd "$PROJECT_ROOT"
         git clone "$2" "$1"
-        cd - >/dev/null 
     else
         mkdir "$1"
     fi
+    cd - >/dev/null
 }
 
 function mkp {
