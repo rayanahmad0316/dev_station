@@ -119,7 +119,7 @@ hs.hotkey.bind({ "cmd" }, "L", layout)
 hs.screen.watcher.new(layout):start()
 layout()
 
-hs.hotkey.bind({ "cmd" }, "R", function()
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "R", function()
     hs.reload()
 end)
 hs.alert.show("Config loaded")
