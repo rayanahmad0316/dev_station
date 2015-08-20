@@ -88,7 +88,7 @@ function layout()
 
     hs.layout.apply({
         --Communications / Administration Apps
-        { "Calendar", nil, comsScreen, hs.geometry.rect(0, 0, 0.5, 1), nil, nil },
+        { "Calendar", nil, comsScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil },
         { "Mail", nil, comsScreen, hs.geometry.rect(0, 0, 0.5, 1), nil, nil },
         { "Messages", nil, comsScreen, hs.geometry.rect(0.5, 0, 0.5, 1), nil, nil },
         { "Slack", nil, comsScreen, hs.geometry.rect(0.5, 0, 0.5, 1), nil, nil },
