@@ -111,7 +111,7 @@ function layout()
     })
 
     hs.layout.apply({
-        { "Google Chrome", "Developer Tools - http://localhost:5000/", mainScreen, hs.geometry.rect(0, 0, 0.375, 1), nil, nil },
+        { "Google Chrome", "Developer Tools.*", mainScreen, hs.geometry.rect(0, 0, 0.375, 1), nil, nil },
     })
 end
 
