@@ -3,7 +3,7 @@ require 'utils'
 hs.window.animationDuration = 0
 
 hs.grid.setGrid({ w = 8, h = 8 })
-hs.grid.setMargins({ w = 0, h = 0 })
+hs.grid.setMargins({ w = 1, h = 1 })
 
 hs.hotkey.bind({ "alt", "cmd" }, "Left", function()
     hs.grid.pushWindowLeft()
@@ -113,6 +113,10 @@ function layout()
     hs.layout.apply({
         { "Google Chrome", "Developer Tools.*", mainScreen, hs.geometry.rect(0, 0, 0.375, 1), nil, nil },
     })
+
+    for index, win in pairs(hs.window.visibleWindows()) do
+        hs.grid.snap(win)
+    end
 end
 
 hs.hotkey.bind({ "cmd" }, "L", layout)
