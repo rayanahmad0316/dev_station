@@ -115,7 +115,9 @@ function layout()
     })
 
     for index, win in pairs(hs.window.visibleWindows()) do
-        hs.grid.snap(win)
+        if win:title() ~= "MiniPlayer" then
+            hs.grid.snap(win)
+        end
     end
 end
 
