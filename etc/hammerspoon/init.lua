@@ -111,8 +111,8 @@ function layout()
     })
 
     hs.layout.apply({
-        { "Google Chrome", "Developer Tools.*", mainScreen, hs.geometry.rect(0, 0, 0.375, 1), nil, nil },
-    })
+        { "Google Chrome", "^Developer Tools.*$", mainScreen, hs.geometry.rect(0, 0, 0.375, 1), nil, nil },
+    }, string.match)
 
     for index, win in pairs(hs.window.visibleWindows()) do
         if win:title() ~= "MiniPlayer" then
