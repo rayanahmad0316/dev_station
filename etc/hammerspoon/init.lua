@@ -82,7 +82,8 @@ bindKeysAdjustWindow({ "cmd" }, { "2", "pad2" }, 0, 4, 8, 4)
 
 function layout()
     local laptopScreen = hs.screen.findByName("Color LCD")
-    local comsScreen = laptopScreen
+    local desktopScreen = hs.screen.findByName("S27B550")
+    local comsScreen = laptopScreen or desktopScreen
     local mainScreen = comsScreen:toEast() or comsScreen
     local secondaryScreen = mainScreen:toEast() or mainScreen
 
