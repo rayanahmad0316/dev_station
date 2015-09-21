@@ -8,7 +8,7 @@ function maskWindowOperation(window, windowOpfunc, ...)
     local snap = hs.drawing.image(window:frame(), window:snapshot())
     snap:bringToFront()
     snap:show()
-    local returnValue = windowOpfunc(...)
+    local returnValue = windowOpfunc(window, ...)
     snap:hide()
     return returnValue
 end
