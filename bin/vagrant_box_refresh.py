@@ -23,7 +23,7 @@ if args.vm_name_match:
     vm_text = subprocess.check_output(("VBoxManage", "list", "vms"),
         universal_newlines=True)
     for vm_line in vm_text.strip().split("\n"):
-        vm_line_chunks = vm_line.split()
+        vm_line_chunks = vm_line.rsplit(None, 1)
         entire_vm_name = vm_line_chunks[0].strip('"')
         if entire_vm_name.startswith(vm_prefix):
             vm_names.append(entire_vm_name)
