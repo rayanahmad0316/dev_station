@@ -3,6 +3,10 @@
 	"2015-09-07": "Labor Day"
     },
     "sick": {
+	"2015-11-10": null,
+	"2015-11-16": null,
+	"2015-11-17": null,
+	"2015-11-18": null 
     },
     "vacation": {
 	"2015-08-14": {"hours": 4, "description": "Unloading moving truck"}
