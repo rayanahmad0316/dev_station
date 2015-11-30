@@ -1,6 +1,8 @@
 {
     "holiday": {
-	"2015-09-07": "Labor Day"
+	"2015-09-07": "Labor Day",
+	"2015-11-26": "Thanksgiving Day",
+	"2015-11-27": "Black Friday"
     },
     "sick": {
 	"2015-11-10": null,
