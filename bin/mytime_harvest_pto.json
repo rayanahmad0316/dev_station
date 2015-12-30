@@ -4,7 +4,14 @@
 	"2015-11-26": "Thanksgiving Day",
 	"2015-11-27": "Black Friday",
 	"2015-12-25": "Christmas Day",
-	"2016-1-1": "New Years Day"
+	"2016-1-1": "New Years Day",
+	"2016-5-30": "Memorial Day",
+	"2016-7-4": "Independence Day",
+	"2016-9-5": "Labor Day",
+	"2016-11-24": "Thanksgiving Day",
+	"2016-11-25": "Black Friday",
+	"2016-12-25": "Christmas Day",
+	"2017-1-1": "New Years Day"
     },
     "sick": {
 	"2015-11-10": null,
