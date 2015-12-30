@@ -2,7 +2,9 @@
     "holiday": {
 	"2015-09-07": "Labor Day",
 	"2015-11-26": "Thanksgiving Day",
-	"2015-11-27": "Black Friday"
+	"2015-11-27": "Black Friday",
+	"2015-12-25": "Christmas Day",
+	"2016-1-1": "New Years Day"
     },
     "sick": {
 	"2015-11-10": null,
@@ -11,6 +13,7 @@
 	"2015-11-18": null 
     },
     "vacation": {
-	"2015-08-14": {"hours": 4, "description": "Unloading moving truck"}
+	"2015-08-14": {"hours": 4, "description": "Unloading moving truck"},
+	"2015-12-24": "Christmas Eve"
     }
 }
