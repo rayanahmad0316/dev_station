@@ -116,6 +116,7 @@ function layout()
         { "SourceTree", nil, toolsScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
         { "MySQLWorkbench", nil, toolsScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
         { "iTunes", "iTunes", toolsScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
+        { "Amazon Music", nil, toolsScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
 
         -- Put the iTunes miniplayer in the bottom right corner
         -- in the unused space not taken by the dock
