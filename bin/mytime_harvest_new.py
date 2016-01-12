@@ -40,6 +40,9 @@ class PTO_TYPE:
     ALL = (HOLIDAY, SICK, VACATION)
     REVOLVING = frozenset([SICK, VACATION])
 
+MAX_PTO_TYPE_WIDTH = max((len(pto_type) for pto_type in PTO_TYPE.ALL))
+
+
 pto_dict = defaultdict(list)
 
 
@@ -50,10 +53,7 @@ def pto_time():
     }
 
 
-pto_time_dict = {
-    pto_type: defaultdict(pto_time)
-    for pto_type in PTO_TYPE.ALL
-}
+pto_time_dict = defaultdict(pto_time)
 
 for pto_type in PTO_TYPE.ALL:
     pto_type_hours_total = 0
@@ -161,12 +161,15 @@ for index, expected_time_item in enumerate(sorted(
             print "    {:13}: {:>7.2f} {}".format("{:%d, %A}".format(pto_date),
                 pto_item_hours, pto_description)
         for pto_type in PTO_TYPE.ALL:
-            print "              {pto_type}: {pto_hours:>7.2f}".format(
-                pto_type=pto_type.title(),
-                pto_hours=pto_time_dict[pto_type]['per_month'][month_key],
-            )
+            pto_type_month_hours = pto_time_dict[pto_type]['per_month'][month_key]
+            if pto_type_month_hours:
+                print "         {pto_type:>{pto_type_width}}: {pto_hours:>7.2f}".format(
+                    pto_type=pto_type.title(),
+                    pto_type_width=MAX_PTO_TYPE_WIDTH,
+                    pto_hours=pto_type_month_hours,
+                )
         print
-        print "              Revolving: {:>7.2f}".format(pto_revolving_hours)
+        print "        Revolving: {:>7.2f}".format(pto_revolving_hours)
 
         print
         print "        Effective: {effective_hours:>7.2f}".format(
@@ -178,12 +181,14 @@ for index, expected_time_item in enumerate(sorted(
         print
         print "-" * 26
         for pto_type in PTO_TYPE.ALL:
-            print "        Total {pto_type}: {total_pto_hours:>7.2f}".format(
+            print "   Total {pto_type:>{pto_type_width}}: {total_pto_hours:>7.2f}".format(
                 pto_type=pto_type.title(),
+                pto_type_width=MAX_PTO_TYPE_WIDTH,
                 total_pto_hours=pto_time_dict[pto_type]['total'],
             )
         print
-        print "              Total Revolving: {:>7.2f}".format(total_pto_revolving_hours)
+        print "  Total Revolving: {:>7.2f}".format(total_pto_revolving_hours)
+        print
 
         print "   Total Expected: {total_expected_hours:>7.2f}".format(
             total_expected_hours=total_expected_hours)
