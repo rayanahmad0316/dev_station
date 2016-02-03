@@ -81,25 +81,15 @@ bindKeysAdjustWindow({ "cmd" }, { "3", "pad3" }, 4, 4, 4, 4)
 bindKeysAdjustWindow({ "cmd" }, { "2", "pad2" }, 0, 4, 8, 4)
 
 function layout()
-    local centerScreen = hs.screen.primaryScreen()
-    local rightScreen = centerScreen:toEast()
-    local leftScreen = centerScreen:toWest()
+    local primaryScreen = hs.screen.primaryScreen()
 
-    local commsScreen = centerScreen
+    local rightScreen = primaryScreen
+    local centerScreen = rightScreen:toWest() or rightScreen
+    local leftScreen = centerScreen:toWest() or rightScreen
+
+    local commsScreen = rightScreen
     local toolsScreen = centerScreen
-    local codeScreen = centerScreen
-
-    if centerScreen and rightScreen and leftScreen then
-        -- Work
-        commsScreen = rightScreen
-        toolsScreen = centerScreen
-        codeScreen = leftScreen
-    elseif centerScreen and rightScreen then
-        -- Home
-        commsScreen = rightScreen
-        toolsScreen = rightScreen
-        codeScreen = centerScreen
-    end
+    local codeScreen = leftScreen
 
     hs.layout.apply({
         --Communications / Administration Apps
@@ -107,6 +97,11 @@ function layout()
         { "Mail", nil, commsScreen, hs.geometry.rect(0, 0, 0.5, 1), nil, nil },
         { "Messages", nil, commsScreen, hs.geometry.rect(0.5, 0, 0.5, 1), nil, nil },
         { "Slack", nil, commsScreen, hs.geometry.rect(0.5, 0, 0.5, 1), nil, nil },
+        { "iTunes", "iTunes", commsScreen, hs.geometry.rect(0.5, 0, 0.5, 1), nil, nil },
+
+        -- Put the iTunes miniplayer in the bottom right corner
+        -- in the unused space not taken by the dock
+        { "iTunes", "MiniPlayer", commsScreen, nil, nil, hs.geometry.rect(-350, -45, 350, 45) },
 
         -- Misc Developer Tools
         -- Left 3/8
@@ -115,19 +110,21 @@ function layout()
         { "Google Chrome", nil, toolsScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
         { "SourceTree", nil, toolsScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
         { "MySQLWorkbench", nil, toolsScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
-        { "iTunes", "iTunes", toolsScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
         { "Amazon Music", nil, toolsScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
 
-        -- Put the iTunes miniplayer in the bottom right corner
-        -- in the unused space not taken by the dock
-        { "iTunes", "MiniPlayer", centerScreen, nil, nil, hs.geometry.rect(-350, -45, 350, 45) },
-
-        -- Coding IDE gets a screen all to itself
+        -- Coding IDE gets the whole codeScreen
         { "PyCharm", nil, codeScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil },
     })
 
+    -- These rules can use regular expressions for value of window name (2nd parameter,
+    -- enabled by 'string.match' parameter to hs.layout.apply()).
     hs.layout.apply({
+        -- Put the Chrome developer tools window beside next to the browser window
+        -- instead of on top of it.
         { "Google Chrome", "^Developer Tools.*$", toolsScreen, hs.geometry.rect(0, 0, 0.375, 1), nil, nil },
+
+        -- Lucid Chart editor gets the whole codeScreen
+        { "Google Chrome", ": Lucidchart$", codeScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil },
     }, string.match)
 
     for index, win in pairs(hs.window.visibleWindows()) do
