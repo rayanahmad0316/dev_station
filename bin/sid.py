@@ -17,4 +17,4 @@ small_chunks = tuple(''.join(item) for item in group(hsid, 2))
 # big_chunks = (''.join(item) for item in group(small_chunks, 2))
 
 sys.stdout.write('{}-{}\n'.format(
-    '-'.join(small_chunks[:-2]), ''.join(small_chunks[-2:])))
+    '-'.join(small_chunks[:-3]), ''.join(small_chunks[-3:])))

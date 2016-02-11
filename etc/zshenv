@@ -27,3 +27,4 @@ alias virtualenv='virtualenv --system-site-packages'
 alias easy_install='easy_install --user'
 
 export JYTHON_HOME=/usr/local/Cellar/jython/2.5.3/libexec
+export NODE_PATH=/usr/local/lib/node_modules
