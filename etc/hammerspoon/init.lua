@@ -83,9 +83,9 @@ bindKeysAdjustWindow({ "cmd" }, { "2", "pad2" }, 0, 4, 8, 4)
 function layout()
     local primaryScreen = hs.screen.primaryScreen()
 
-    local rightScreen = primaryScreen
-    local centerScreen = rightScreen:toWest() or rightScreen
-    local leftScreen = centerScreen:toWest() or rightScreen
+    local centerScreen = primaryScreen
+    local leftScreen = centerScreen:toWest() or centerScreen
+    local rightScreen = centerScreen:toEast() or centerScreen
 
     local commsScreen = rightScreen
     local toolsScreen = centerScreen
