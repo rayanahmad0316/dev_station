@@ -101,7 +101,7 @@ function layout()
 
         -- Put the iTunes miniplayer in the bottom right corner
         -- in the unused space not taken by the dock
-        { "iTunes", "MiniPlayer", commsScreen, nil, nil, hs.geometry.rect(-350, -45, 350, 45) },
+        { "iTunes", "MiniPlayer", toolsScreen, nil, nil, hs.geometry.rect(-350, -45, 350, 45) },
 
         -- Misc Developer Tools
         -- Left 3/8
