@@ -1,8 +1,12 @@
 require 'utils'
 
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "R", function()
+    hs.reload()
+end)
+
 hs.window.animationDuration = 0
 
-hs.grid.setGrid({ w = 8, h = 8 })
+hs.grid.setGrid({ w = 10, h = 10 })
 hs.grid.setMargins({ w = 1, h = 1 })
 
 hs.hotkey.bind({ "alt", "cmd" }, "Left", function()
@@ -70,17 +74,54 @@ hs.hotkey.bind({ "alt" }, "Up", function()
     end)
 end)
 
-bindKeysAdjustWindow({ "cmd" }, { "5", "pad5" }, 0, 0, 8, 8)
-bindKeysAdjustWindow({ "cmd" }, { "1", "pad1" }, 0, 4, 4, 4)
-bindKeysAdjustWindow({ "cmd" }, { "4", "pad4" }, 0, 0, 4, 8)
-bindKeysAdjustWindow({ "cmd" }, { "7", "pad7" }, 0, 0, 4, 4)
-bindKeysAdjustWindow({ "cmd" }, { "8", "pad8" }, 0, 0, 8, 4)
-bindKeysAdjustWindow({ "cmd" }, { "9", "pad9" }, 4, 0, 4, 4)
-bindKeysAdjustWindow({ "cmd" }, { "6", "pad6" }, 4, 0, 4, 8)
-bindKeysAdjustWindow({ "cmd" }, { "3", "pad3" }, 4, 4, 4, 4)
-bindKeysAdjustWindow({ "cmd" }, { "2", "pad2" }, 0, 4, 8, 4)
+bindKeysAdjustWindow({ "cmd" }, { "5", "pad5" }, 0, 0, 10, 10)
+bindKeysAdjustWindow({ "cmd" }, { "1", "pad1" }, 0, 5, 5, 5)
+bindKeysAdjustWindow({ "cmd" }, { "4", "pad4" }, 0, 0, 5, 10)
+bindKeysAdjustWindow({ "cmd" }, { "7", "pad7" }, 0, 0, 5, 5)
+bindKeysAdjustWindow({ "cmd" }, { "8", "pad8" }, 0, 0, 10, 5)
+bindKeysAdjustWindow({ "cmd" }, { "9", "pad9" }, 5, 0, 5, 5)
+bindKeysAdjustWindow({ "cmd" }, { "6", "pad6" }, 5, 0, 5, 10)
+bindKeysAdjustWindow({ "cmd" }, { "3", "pad3" }, 5, 5, 5, 5)
+bindKeysAdjustWindow({ "cmd" }, { "2", "pad2" }, 0, 5, 10, 5)
 
-function layout()
+local screens_plus2 = {left={x=-1,y=0}, center={x=0, y=0}, right={x=1, y=0}}
+local screens_plus1 = {center={x=0, y=0}, right={x=1, y=0}}
+local screens_plus0 = {center={x=0, y=0}}
+
+window_layout = hs.window.layout.new({
+    -- Comms Screen (1,0=right)
+        -- Maximized
+        {hs.window.filter.new({Calendar={}}), "fit 1 focused [0,0,100,100] 1,0 | min"},
+
+        -- Left 50%
+        {hs.window.filter.new({Mail={}}), "tile 2 focused 2x1 [0,0,50,100] 1,0 | min"},
+
+        -- Right 50%
+        {hs.window.filter.new({iTunes={allowTitles="iTunes"}}), "fit 1 [50,0,100,100] 1,0 | min"},
+
+            -- Top 50%
+            {hs.window.filter.new({Slack={allowTitles="Slack"}}), "fit 1 [50,0,100,50] 1,0 | min"},
+
+            -- Bottom 50%
+            {hs.window.filter.new({Messages={}}), "fit 1 [50,50,100,100] 1,0 | min"},
+
+
+    -- Tools Screen (0,0=center)
+        -- Left 40%
+        {hs.window.filter.new({Terminal={}}), "tile 2 focused 2x1 [0,0,40,100] 0,0 | min"},
+
+        -- Right 60%
+        {hs.window.filter.new("Google Chrome"), "tile 2 focused 2x1 [40,0,100,100] 0,0 | min"},
+        {hs.window.filter.new({SourceTree={}}), "tile 2 focused 2x1 [40,0,100,100] 0,0 | min"},
+        {hs.window.filter.new({MySQLWorkbench={}}), "tile 2 focused 2x1 [40,0,100,100] 0,0 | min"},
+
+    -- Code Screen (-1,0=left)
+        {hs.window.filter.new({PyCharm={}}), "fit 1 focused [0,0,100,100] -1,0 | min"},
+})
+
+function apply_window_layout()
+    window_layout:apply()
+
     local primaryScreen = hs.screen.primaryScreen()
 
     local centerScreen = primaryScreen
@@ -92,28 +133,10 @@ function layout()
     local codeScreen = leftScreen
 
     hs.layout.apply({
-        --Communications / Administration Apps
-        { "Calendar", nil, commsScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil },
-        { "Mail", nil, commsScreen, hs.geometry.rect(0, 0, 0.5, 1), nil, nil },
-        { "Messages", nil, commsScreen, hs.geometry.rect(0.5, 0, 0.5, 1), nil, nil },
-        { "Slack", nil, commsScreen, hs.geometry.rect(0.5, 0, 0.5, 1), nil, nil },
-        { "iTunes", "iTunes", commsScreen, hs.geometry.rect(0.5, 0, 0.5, 1), nil, nil },
-
         -- Put the iTunes miniplayer in the bottom right corner
         -- in the unused space not taken by the dock
         { "iTunes", "MiniPlayer", toolsScreen, nil, nil, hs.geometry.rect(-350, -45, 350, 45) },
 
-        -- Misc Developer Tools
-        -- Left 3/8
-        { "Terminal", nil, toolsScreen, hs.geometry.rect(0, 0, 0.375, 1), nil, nil },
-        -- Right 5/8
-        { "Google Chrome", nil, toolsScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
-        { "SourceTree", nil, toolsScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
-        { "MySQLWorkbench", nil, toolsScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
-        { "Amazon Music", nil, toolsScreen, hs.geometry.rect(0.375, 0, 0.625, 1), nil, nil },
-
-        -- Coding IDE gets the whole codeScreen
-        { "PyCharm", nil, codeScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil },
     })
 
     -- These rules can use regular expressions for value of window name (2nd parameter,
@@ -121,7 +144,7 @@ function layout()
     hs.layout.apply({
         -- Put the Chrome developer tools window beside next to the browser window
         -- instead of on top of it.
-        { "Google Chrome", "^Developer Tools.*$", toolsScreen, hs.geometry.rect(0, 0, 0.375, 1), nil, nil },
+        { "Google Chrome", "^Developer Tools.*$", toolsScreen, hs.geometry.rect(0, 0, 0.4, 1), nil, nil },
 
         -- Lucid Chart editor gets the whole codeScreen
         { "Google Chrome", ": Lucidchart$", codeScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil },
@@ -137,11 +160,10 @@ function layout()
     end
 end
 
-hs.hotkey.bind({ "cmd" }, "L", layout)
-hs.screen.watcher.new(layout):start()
-layout()
+--window_layout:start()
+apply_window_layout()
 
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "R", function()
-    hs.reload()
-end)
+hs.hotkey.bind({ "cmd" }, "L", apply_window_layout)
+hs.screen.watcher.new(apply_window_layout):start()
+
 hs.alert.show("Config loaded")
