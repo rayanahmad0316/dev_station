@@ -108,7 +108,7 @@ window_layout = hs.window.layout.new({
 
     -- Tools Screen (0,0=center)
         -- Left 40%
-        {hs.window.filter.new({Terminal={}}), "tile 2 focused 2x1 [0,0,40,100] 0,0 | min"},
+        {hs.window.filter.new({Terminal={}}), "tile 4 focused 2x1 [0.5,0.5,39.5,99.5] 0,0 | min"},
 
         -- Right 60%
         {hs.window.filter.new("Google Chrome"), "tile 2 focused 2x1 [40,0,100,100] 0,0 | min"},
@@ -118,6 +118,11 @@ window_layout = hs.window.layout.new({
     -- Code Screen (-1,0=left)
         {hs.window.filter.new({PyCharm={}}), "fit 1 focused [0,0,100,100] -1,0 | min"},
 })
+
+function fix_bottom_margin(win)
+    hs.grid.resizeWindowShorter(win)
+    hs.grid.resizeWindowTaller(win)
+end
 
 function apply_window_layout()
     window_layout:apply()
@@ -150,13 +155,14 @@ function apply_window_layout()
         { "Google Chrome", ": Lucidchart$", codeScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil },
     }, string.match)
 
-    for index, win in pairs(hs.window.visibleWindows()) do
-        if win:title() ~= "MiniPlayer" then
-            hs.grid.snap(win)
-            -- Allow for bottom margin bug
-            hs.grid.resizeWindowShorter(win)
-            hs.grid.resizeWindowTaller(win)
-        end
+    local snap_win_filter = hs.window.filter.new({
+        default={visible=true},
+        iTunes={visible=true, rejectTitles="MiniPlayer"},
+        Terminal={visible=false}})
+
+    for index, win in pairs(snap_win_filter:getWindows()) do
+        hs.grid.snap(win)
+        maskWindowOperation(win, fix_bottom_margin)
     end
 end
 
