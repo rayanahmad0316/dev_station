@@ -109,14 +109,16 @@ window_layout = hs.window.layout.new({
     -- Tools Screen (0,0=center)
         -- Left 40%
         {hs.window.filter.new({Terminal={}}), "tile 4 focused 2x1 [0.5,0.5,39.5,99.5] 0,0 | min"},
+    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowTitles = "Developer Tools" }), "tile 2 focused 2x1 [0,0,40,100] 0,0 | min" },
 
         -- Right 60%
-        {hs.window.filter.new("Google Chrome"), "tile 2 focused 2x1 [40,0,100,100] 0,0 | min"},
+    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, rejectTitles = { "Developer Tools", "Lucidchart" } }), "tile 2 focused 2x1 [40,0,100,100] 0,0 | min" },
         {hs.window.filter.new({SourceTree={}}), "tile 2 focused 2x1 [40,0,100,100] 0,0 | min"},
         {hs.window.filter.new({MySQLWorkbench={}}), "tile 2 focused 2x1 [40,0,100,100] 0,0 | min"},
 
     -- Code Screen (-1,0=left)
-        {hs.window.filter.new({PyCharm={}}), "fit 1 focused [0,0,100,100] -1,0 | min"},
+    { hs.window.filter.new({ PyCharm = {} }), "move all focused [0,0,100,100] -1,0" },
+    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowTitles = "Lucidchart" }), "move all focused [0,0,100,100] -1,0" },
 })
 
 function fix_bottom_margin(win)
@@ -127,39 +129,18 @@ end
 function apply_window_layout()
     window_layout:apply()
 
-    local primaryScreen = hs.screen.primaryScreen()
-
-    local centerScreen = primaryScreen
-    local leftScreen = centerScreen:toWest() or centerScreen
-    local rightScreen = centerScreen:toEast() or centerScreen
-
-    local commsScreen = rightScreen
-    local toolsScreen = centerScreen
-    local codeScreen = leftScreen
-
     hs.layout.apply({
         -- Put the iTunes miniplayer in the bottom right corner
         -- in the unused space not taken by the dock
-        { "iTunes", "MiniPlayer", toolsScreen, nil, nil, hs.geometry.rect(-350, -45, 350, 45) },
+        { "iTunes", "MiniPlayer", hs.screen.primaryScreen(), nil, nil, hs.geometry.rect(-350, -45, 350, 45) },
 
     })
 
-    -- These rules can use regular expressions for value of window name (2nd parameter,
-    -- enabled by 'string.match' parameter to hs.layout.apply()).
-    hs.layout.apply({
-        -- Put the Chrome developer tools window beside next to the browser window
-        -- instead of on top of it.
-        { "Google Chrome", "^Developer Tools.*$", toolsScreen, hs.geometry.rect(0, 0, 0.4, 1), nil, nil },
-
-        -- Lucid Chart editor gets the whole codeScreen
-        { "Google Chrome", ": Lucidchart$", codeScreen, hs.geometry.rect(0, 0, 1, 1), nil, nil },
-    }, string.match)
-
+    -- Snap all windows except the iTunes MiniPlayer and Terminals
     local snap_win_filter = hs.window.filter.new({
         default={visible=true},
         iTunes={visible=true, rejectTitles="MiniPlayer"},
         Terminal={visible=false}})
-
     for index, win in pairs(snap_win_filter:getWindows()) do
         hs.grid.snap(win)
         maskWindowOperation(win, fix_bottom_margin)
