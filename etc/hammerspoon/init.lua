@@ -99,11 +99,11 @@ window_layout = hs.window.layout.new({
         -- Right 50%
         {hs.window.filter.new({iTunes={allowTitles="iTunes"}}), "fit 1 [50,0,100,100] 1,0 | min"},
 
-            -- Top 70%
-            {hs.window.filter.new({Slack={allowTitles="Slack"}}), "fit 1 [50,0,100,70] 1,0 | min"},
+    -- Top 60%
+    { hs.window.filter.new({ Slack = { allowTitles = "Slack" } }), "fit 1 [50,0,100,60] 1,0 | min" },
 
-            -- Bottom 30%
-            {hs.window.filter.new({Messages={}}), "fit 1 [50,70,100,100] 1,0 | min"},
+    -- Bottom 40%
+    { hs.window.filter.new({ Messages = {} }), "fit 1 [50,60,100,100] 1,0 | min" },
 
 
     -- Tools Screen (0,0=center)
