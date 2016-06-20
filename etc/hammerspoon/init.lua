@@ -7,7 +7,7 @@ end)
 hs.window.animationDuration = 0
 
 hs.grid.setGrid({ w = 10, h = 10 })
-hs.grid.setMargins({ w = 1, h = 1 })
+hs.grid.setMargins({ w = 0, h = 0 })
 
 hs.hotkey.bind({ "alt", "cmd" }, "Left", function()
     hs.grid.pushWindowLeft()
@@ -113,11 +113,11 @@ window_layout = hs.window.layout.new({
 
         -- Right 60%
     { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, rejectTitles = { "Developer Tools", "Lucidchart" } }), "tile 2 focused 2x1 [40,0,100,100] 0,0 | min" },
-        {hs.window.filter.new({SourceTree={}}), "tile 2 focused 2x1 [40,0,100,100] 0,0 | min"},
+    { hs.window.filter.new({ SourceTree = { allowTitles = "(Git)" } }), "tile 2 focused 2x1 [40,0,100,100] 0,0 | min" },
         {hs.window.filter.new({MySQLWorkbench={}}), "tile 2 focused 2x1 [40,0,100,100] 0,0 | min"},
 
     -- Code Screen (-1,0=left)
-    { hs.window.filter.new({ PyCharm = {} }), "move all focused [0,0,100,100] -1,0" },
+    { hs.window.filter.new({ PyCharm = { allowTitles = "/projects/" } }), "move all focused [0,0,100,100] -1,0" },
     { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowTitles = "Lucidchart" }), "move all focused [0,0,100,100] -1,0" },
 })
 
@@ -126,31 +126,34 @@ function fix_bottom_margin(win)
     hs.grid.resizeWindowTaller(win)
 end
 
-function apply_window_layout()
+function fix_layout()
     window_layout:apply()
 
-    hs.layout.apply({
-        -- Put the iTunes miniplayer in the bottom right corner
-        -- in the unused space not taken by the dock
-        { "iTunes", "MiniPlayer", hs.screen.primaryScreen(), nil, nil, hs.geometry.rect(-350, -45, 350, 45) },
-
-    })
-
     -- Snap all windows except the iTunes MiniPlayer and Terminals
-    local snap_win_filter = hs.window.filter.new({
-        default={visible=true},
-        iTunes={visible=true, rejectTitles="MiniPlayer"},
-        Terminal={visible=false}})
-    for index, win in pairs(snap_win_filter:getWindows()) do
-        hs.grid.snap(win)
-        maskWindowOperation(win, fix_bottom_margin)
-    end
+    --    local snap_win_filter = hs.window.filter.new({
+    --        default={visible=true},
+    --        iTunes={visible=true, rejectTitles="MiniPlayer"},
+    --        Terminal={visible=false}})
+    --    for index, win in pairs(snap_win_filter:getWindows()) do
+    --        hs.grid.snap(win)
+    --        maskWindowOperation(win, fix_bottom_margin)
+    --    end
+
+    local status, err = pcall(function()
+        hs.layout.apply({
+            -- Put the iTunes miniplayer in the bottom right corner
+            -- in the unused space not taken by the dock
+            { "iTunes", "MiniPlayer", hs.screen.primaryScreen(), nil, nil, hs.geometry.rect(-350, -45, 350, 45) },
+        })
+    end)
 end
 
---window_layout:start()
-apply_window_layout()
+fix_layout()
 
-hs.hotkey.bind({ "cmd" }, "L", apply_window_layout)
-hs.screen.watcher.new(apply_window_layout):start()
+hs.hotkey.bind({ "cmd" }, "L", fix_layout)
+
+hs.screen.watcher.new(fix_layout):start()
+
+window_layout:start()
 
 hs.alert.show("Config loaded")
