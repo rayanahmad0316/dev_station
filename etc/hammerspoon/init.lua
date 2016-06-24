@@ -107,14 +107,14 @@ window_layout = hs.window.layout.new({
 
 
     -- Tools Screen (0,0=center)
-        -- Left 40%
-        {hs.window.filter.new({Terminal={}}), "tile 4 focused 2x1 [0.5,0.5,39.5,99.5] 0,0 | min"},
-    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowTitles = "Developer Tools" }), "tile 2 focused 2x1 [0,0,40,100] 0,0 | min" },
+    -- Left 35%
+    { hs.window.filter.new({ Terminal = {} }), "tile 4 focused 2x1 [0.5,0.5,34.5,99.5] 0,0 | min" },
+    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowTitles = "Developer Tools" }), "tile 2 focused 2x1 [0,0,35,100] 0,0 | min" },
 
-        -- Right 60%
-    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, rejectTitles = { "Developer Tools", "Lucidchart" } }), "tile 2 focused 2x1 [40,0,100,100] 0,0 | min" },
-    { hs.window.filter.new({ SourceTree = { allowTitles = "(Git)" } }), "tile 2 focused 2x1 [40,0,100,100] 0,0 | min" },
-        {hs.window.filter.new({MySQLWorkbench={}}), "tile 2 focused 2x1 [40,0,100,100] 0,0 | min"},
+    -- Right 65%
+    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, rejectTitles = { "Developer Tools", "Lucidchart" } }), "tile 2 focused 2x1 [35,0,100,100] 0,0 | min" },
+    { hs.window.filter.new({ SourceTree = { allowTitles = "(Git)" } }), "tile 2 focused 2x1 [35,0,100,100] 0,0 | min" },
+    { hs.window.filter.new({ MySQLWorkbench = {} }), "tile 2 focused 2x1 [35,0,100,100] 0,0 | min" },
 
     -- Code Screen (-1,0=left)
     { hs.window.filter.new({ PyCharm = { allowTitles = "/projects/" } }), "move all focused [0,0,100,100] -1,0" },
