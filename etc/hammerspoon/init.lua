@@ -2,7 +2,7 @@ require 'utils'
 
 hs.window.animationDuration = 0
 
-hs.grid.setGrid({ w = 10, h = 10 })
+hs.grid.setGrid({ w = 20, h = 20 })
 hs.grid.setMargins({ w = 0, h = 0 })
 
 hs.hotkey.bind({ "alt", "cmd" }, "Left", function()
@@ -70,15 +70,15 @@ hs.hotkey.bind({ "alt" }, "Up", function()
     end)
 end)
 
-bindKeysAdjustWindow({ "cmd" }, { "5", "pad5" }, 0, 0, 10, 10)
-bindKeysAdjustWindow({ "cmd" }, { "1", "pad1" }, 0, 5, 5, 5)
-bindKeysAdjustWindow({ "cmd" }, { "4", "pad4" }, 0, 0, 5, 10)
-bindKeysAdjustWindow({ "cmd" }, { "7", "pad7" }, 0, 0, 5, 5)
-bindKeysAdjustWindow({ "cmd" }, { "8", "pad8" }, 0, 0, 10, 5)
-bindKeysAdjustWindow({ "cmd" }, { "9", "pad9" }, 5, 0, 5, 5)
-bindKeysAdjustWindow({ "cmd" }, { "6", "pad6" }, 5, 0, 5, 10)
-bindKeysAdjustWindow({ "cmd" }, { "3", "pad3" }, 5, 5, 5, 5)
-bindKeysAdjustWindow({ "cmd" }, { "2", "pad2" }, 0, 5, 10, 5)
+bindKeysAdjustWindow({ "cmd" }, { "5", "pad5" }, 0, 0, 20, 20)
+bindKeysAdjustWindow({ "cmd" }, { "1", "pad1" }, 0, 10, 10, 10)
+bindKeysAdjustWindow({ "cmd" }, { "4", "pad4" }, 0, 0, 10, 20)
+bindKeysAdjustWindow({ "cmd" }, { "7", "pad7" }, 0, 0, 10, 10)
+bindKeysAdjustWindow({ "cmd" }, { "8", "pad8" }, 0, 0, 20, 10)
+bindKeysAdjustWindow({ "cmd" }, { "9", "pad9" }, 10, 0, 10, 10)
+bindKeysAdjustWindow({ "cmd" }, { "6", "pad6" }, 10, 0, 10, 20)
+bindKeysAdjustWindow({ "cmd" }, { "3", "pad3" }, 10, 10, 10, 10)
+bindKeysAdjustWindow({ "cmd" }, { "2", "pad2" }, 0, 10, 20, 10)
 
 local screens_plus2 = {left={x=-1,y=0}, center={x=0, y=0}, right={x=1, y=0}}
 local screens_plus1 = {center={x=0, y=0}, right={x=1, y=0}}
