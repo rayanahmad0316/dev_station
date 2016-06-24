@@ -1,0 +1,4 @@
+#/bin/sh
+cd ~/dev_station
+git push $1
+cd -
