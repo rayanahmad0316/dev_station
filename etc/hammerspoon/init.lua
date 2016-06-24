@@ -113,7 +113,7 @@ window_layout = hs.window.layout.new({
     { hs.window.filter.new({ MySQLWorkbench = { allowRoles = "AXStandardWindow" } }), "tile 2 focused 2x1 [35,0,100,100] 0,0 | min" },
 
     -- Code Screen (-1,0=left)
-    { hs.window.filter.new({ PyCharm = { allowRoles = "AXStandardWindow", rejectTitles = "Commit Changes" } }), "move all focused [0,0,100,100] -1,0" },
+    { hs.window.filter.new({ PyCharm = { allowRoles = "AXStandardWindow", rejectTitles = {"Commit Changes", "Reopen Project"} } }), "move all focused [0,0,100,100] -1,0" },
     { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", allowTitles = "Lucidchart" }), "move all focused [0,0,100,100] -1,0" },
 })
 
