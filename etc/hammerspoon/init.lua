@@ -1,9 +1,5 @@
 require 'utils'
 
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "R", function()
-    hs.reload()
-end)
-
 hs.window.animationDuration = 0
 
 hs.grid.setGrid({ w = 10, h = 10 })
@@ -155,5 +151,12 @@ hs.hotkey.bind({ "cmd" }, "L", fix_layout)
 hs.screen.watcher.new(fix_layout):start()
 
 window_layout:start()
+
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "P", function()
+    window_layout:pause()
+end)
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "R", function()
+    window_layout:resume()
+end)
 
 hs.alert.show("Config loaded")
