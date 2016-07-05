@@ -47,7 +47,51 @@
     "2016-6-6": "Short-Term Disability",
     "2016-6-7": "Short-Term Disability",
     "2016-6-8": "Short-Term Disability",
-    "2016-6-9": "Short-Term Disability"
+    "2016-6-9": "Short-Term Disability",
+    "2016-6-10": {
+      "hours": 4,
+      "description": "Short-Term Disability (Half-Day)"
+    },
+    "2016-6-13": {
+      "hours": 4,
+      "description": "Short-Term Disability (Half-Day)"
+    },
+    "2016-6-14": {
+      "hours": 4,
+      "description": "Short-Term Disability (Half-Day)"
+    },
+    "2016-6-15": {
+      "hours": 4,
+      "description": "Short-Term Disability (Half-Day)"
+    },
+    "2016-6-16": {
+      "hours": 4,
+      "description": "Short-Term Disability (Half-Day)"
+    },
+    "2016-6-17": {
+      "hours": 4,
+      "description": "Short-Term Disability (Half-Day)"
+    },
+    "2016-6-20": {
+      "hours": 4,
+      "description": "Short-Term Disability (Half-Day)"
+    },
+    "2016-6-21": {
+      "hours": 4,
+      "description": "Short-Term Disability (Half-Day)"
+    },
+    "2016-6-22": {
+      "hours": 4,
+      "description": "Short-Term Disability (Half-Day)"
+    },
+    "2016-6-23": {
+      "hours": 4,
+      "description": "Short-Term Disability (Half-Day)"
+    },
+    "2016-6-28": "Short-Term Disability (unconfirmed)",
+    "2016-6-29": "Short-Term Disability (unconfirmed)",
+    "2016-6-30": "Short-Term Disability (unconfirmed)",
+    "2016-7-1": "Short-Term Disability (unconfirmed)"
   },
   "vacation": {
     "2015-08-14": {
