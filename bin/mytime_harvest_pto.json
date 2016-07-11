@@ -88,10 +88,13 @@
       "hours": 4,
       "description": "Short-Term Disability (Half-Day)"
     },
-    "2016-6-28": "Short-Term Disability (unconfirmed)",
-    "2016-6-29": "Short-Term Disability (unconfirmed)",
-    "2016-6-30": "Short-Term Disability (unconfirmed)",
-    "2016-7-1": "Short-Term Disability (unconfirmed)"
+    "2016-6-28": "FMLA",
+    "2016-6-29": "FMLA",
+    "2016-6-30": "FMLA",
+    "2016-7-1": "FMLA",
+    "2016-7-6": "FMLA",
+    "2016-7-7": "FMLA",
+    "2016-7-8": "FMLA"
   },
   "vacation": {
     "2015-08-14": {
