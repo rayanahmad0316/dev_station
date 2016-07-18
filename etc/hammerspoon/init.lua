@@ -159,4 +159,9 @@ hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "R", function()
     window_layout:resume()
 end)
 
+-- Get around paste blocking
+hs.hotkey.bind({ "cmd", "alt" }, "V", function()
+    hs.eventtap.keyStrokes(hs.pasteboard.getContents())
+end)
+
 hs.alert.show("Config loaded")
