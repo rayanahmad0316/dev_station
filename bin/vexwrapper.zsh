@@ -63,10 +63,10 @@ if [ -n "$VIRTUAL_ENV" ]; then
         "$VIRTUAL_ENV/bin/python" -c "import distutils; print(distutils.sysconfig.get_python_lib())"
     }
 
-    _VENV_SITE_PACKAGES="$(_get_venv_site_packages)"
+    export VENV_SITE_PACKAGES="$(_get_venv_site_packages)"
 
     function cdsp {
-        cd "$_VENV_SITE_PACKAGES"
+        cd "$VENV_SITE_PACKAGES"
     }
 
     function cdp {
