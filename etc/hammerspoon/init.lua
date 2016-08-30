@@ -88,6 +88,7 @@ window_layout = hs.window.layout.new({
     -- Comms Screen (1,0=right)
         -- Maximized
     { hs.window.filter.new({ Calendar = { allowRoles = "AXStandardWindow" } }), "move all focused [0,0,100,100] 1,0 | min" },
+    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", allowTitles = "Hangouts" }), "tile 2 focused 1x2 [0,0,100,100] 1,0 | min" },
 
         -- Left 50%
     { hs.window.filter.new({ Mail = { allowRoles = "AXStandardWindow" } }), "tile 2 focused 2x1 [0,0,50,100] 1,0 | min" },
@@ -108,7 +109,7 @@ window_layout = hs.window.layout.new({
     { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", allowTitles = "Developer Tools" }), "tile 2 focused 2x1 [0,0,35,100] 0,0 | min" },
 
     -- Right 65%
-    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", rejectTitles = { "Developer Tools", "Lucidchart" } }), "tile 2 focused 2x1 [35,0,100,100] 0,0 | min" },
+    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", rejectTitles = { "Developer Tools", "Lucidchart", "Hangouts" } }), "tile 2 focused 2x1 [35,0,100,100] 0,0 | min" },
     { hs.window.filter.new({ SourceTree = { allowRoles = "AXStandardWindow" } }), "tile 2 focused 2x1 [35,0,100,100] 0,0 | min" },
     { hs.window.filter.new({ MySQLWorkbench = { allowRoles = "AXStandardWindow" } }), "tile 2 focused 2x1 [35,0,100,100] 0,0 | min" },
 
@@ -148,9 +149,7 @@ fix_layout()
 
 hs.hotkey.bind({ "cmd" }, "L", fix_layout)
 
-hs.screen.watcher.new(fix_layout):start()
-
-window_layout:start()
+-- hs.screen.watcher.new(fix_layout):start()
 
 hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "P", function()
     window_layout:pause()
@@ -163,5 +162,7 @@ end)
 hs.hotkey.bind({ "cmd", "alt" }, "V", function()
     hs.eventtap.keyStrokes(hs.pasteboard.getContents())
 end)
+
+window_layout:start()
 
 hs.alert.show("Config loaded")
