@@ -80,10 +80,6 @@ bindKeysAdjustWindow({ "cmd" }, { "6", "pad6" }, 10, 0, 10, 20)
 bindKeysAdjustWindow({ "cmd" }, { "3", "pad3" }, 10, 10, 10, 10)
 bindKeysAdjustWindow({ "cmd" }, { "2", "pad2" }, 0, 10, 20, 10)
 
-local screens_plus2 = {left={x=-1,y=0}, center={x=0, y=0}, right={x=1, y=0}}
-local screens_plus1 = {center={x=0, y=0}, right={x=1, y=0}}
-local screens_plus0 = {center={x=0, y=0}}
-
 window_layout = hs.window.layout.new({
     -- Comms Screen (1,0=right)
         -- Maximized
@@ -126,16 +122,6 @@ end
 function fix_layout()
     window_layout:apply()
 
-    -- Snap all windows except the iTunes MiniPlayer and Terminals
-    --    local snap_win_filter = hs.window.filter.new({
-    --        default={visible=true},
-    --        iTunes={visible=true, rejectTitles="MiniPlayer"},
-    --        Terminal={visible=false}})
-    --    for index, win in pairs(snap_win_filter:getWindows()) do
-    --        hs.grid.snap(win)
-    --        maskWindowOperation(win, fix_bottom_margin)
-    --    end
-
     local status, err = pcall(function()
         hs.layout.apply({
             -- Put the iTunes miniplayer in the bottom right corner
@@ -148,8 +134,6 @@ end
 fix_layout()
 
 hs.hotkey.bind({ "cmd" }, "L", fix_layout)
-
--- hs.screen.watcher.new(fix_layout):start()
 
 hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "P", function()
     window_layout:pause()
