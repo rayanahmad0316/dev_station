@@ -1,0 +1,2 @@
+# Must be source in current shell
+pyenv shell 3.4.3

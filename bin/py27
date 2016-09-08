@@ -1,0 +1,2 @@
+# Must be sourced in current shell
+pyenv shell 2.7.10
