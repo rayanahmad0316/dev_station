@@ -26,19 +26,24 @@ f = open('revisions')
 revisions = [(index, line.strip()) for index, line in enumerate(f)]
 f.close()
 
-broken_revision = None
+threshold_revision = None
 while revisions:
     leftgroup, rightgroup = divide(revisions, 2)
 
-    print 'leftgroup: {}, rightgroup: {}'.format(len(leftgroup), len(rightgroup))
-    print 'Test {!r}'.format(rightgroup[0])
-    response = raw_input('Broken? y/n: ')
+    if rightgroup:
+        print 'leftgroup: {}, rightgroup: {}'.format(len(leftgroup), len(rightgroup))
+        print 'Test {!r}'.format(rightgroup[0])
+        response = raw_input('Condition match? y/n: ')
 
-    if response == 'y':
-        broken_revision = rightgroup[0]
-        revisions = rightgroup
-    elif len(leftgroup) == 1 and broken_revision:
-        print 'Broken revision is {}'.format(broken_revision)
-        break
+        if response == 'y':
+            threshold_revision = rightgroup[0]
+            revisions = rightgroup
+        elif len(leftgroup) == 1 and threshold_revision:
+            break
+        else:
+            revisions = leftgroup
     else:
-        revisions = leftgroup
+        threshold_revision = leftgroup[0]
+        break
+
+print 'Threshhold revision is {}'.format(threshold_revision)
