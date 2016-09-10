@@ -136,10 +136,10 @@ fix_layout()
 hs.hotkey.bind({ "cmd" }, "L", fix_layout)
 
 hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "P", function()
-    window_layout:pause()
+    window_layout:stop()
 end)
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "R", function()
-    window_layout:resume()
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "S", function()
+    window_layout:start()
 end)
 
 -- Get around paste blocking
