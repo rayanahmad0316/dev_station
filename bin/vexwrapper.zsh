@@ -119,6 +119,11 @@ else
     if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
     function rmv {
+        if [ -z "$1" ]; then
+            echo "Virtualenv name not provided"
+            return 1
+        fi
+
         venv="$VIRTUAL_ENV_ROOT/$1"
         if [ -d "$venv" ]; then
             rm -rf "$venv"
