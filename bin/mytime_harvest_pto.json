@@ -150,6 +150,38 @@
     "2016-10-19": {
       "hours": 2,
       "description": "6 hour day"
+    },
+    "2016-10-20": {
+      "hours": 2,
+      "description": "6 hour day"
+    },
+    "2016-10-21": {
+      "hours": 6,
+      "description": "6 hour day, not well"
+    },
+    "2016-10-24": {
+      "hours": 4.75,
+      "description": "6 hour day, not well"
+    },
+    "2016-10-25": {
+      "hours": 2,
+      "description": "6 hour day"
+    },
+    "2016-10-26": {
+      "hours": 8,
+      "description": "6 hour day, not well"
+    },
+    "2016-10-27": {
+      "hours": 2,
+      "description": "6 hour day"
+    },
+    "2016-10-28": {
+      "hours": 2,
+      "description": "6 hour day"
+    },
+    "2016-10-31": {
+      "hours": 8,
+      "description": "6 hour day, not well"
     }
   },
   "vacation": {
