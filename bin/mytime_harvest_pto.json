@@ -31,241 +31,242 @@
     "2016-5-5": null,
     "2016-5-6": null,
 
-    "2016-5-17": "Short-Term Disability",
-    "2016-5-18": "Short-Term Disability",
-    "2016-5-19": "Short-Term Disability",
-    "2016-5-20": "Short-Term Disability",
-    "2016-5-23": "Short-Term Disability",
-    "2016-5-24": "Short-Term Disability",
-    "2016-5-25": "Short-Term Disability",
-    "2016-5-26": "Short-Term Disability",
-    "2016-5-27": "Short-Term Disability",
-    "2016-5-31": "Short-Term Disability",
-    "2016-6-1": "Short-Term Disability",
-    "2016-6-2": "Short-Term Disability",
-    "2016-6-3": "Short-Term Disability",
-    "2016-6-6": "Short-Term Disability",
-    "2016-6-7": "Short-Term Disability",
-    "2016-6-8": "Short-Term Disability",
-    "2016-6-9": "Short-Term Disability",
+    "2016-5-17": "SDD",
+    "2016-5-18": "SDD",
+    "2016-5-19": "SDD",
+    "2016-5-20": "SDD",
+    "2016-5-23": "SDD",
+    "2016-5-24": "SDD",
+    "2016-5-25": "SDD",
+    "2016-5-26": "SDD",
+    "2016-5-27": "SDD",
+    "2016-5-31": "SDD",
+    "2016-6-1": "SDD",
+    "2016-6-2": "SDD",
+    "2016-6-3": "SDD",
+    "2016-6-6": "SDD",
+    "2016-6-7": "SDD",
+    "2016-6-8": "SDD",
+    "2016-6-9": "SDD",
     "2016-6-10": {
       "hours": 4,
-      "description": "Short-Term Disability (Half-Day)"
+      "description": "SDD (Half-Day)"
     },
     "2016-6-13": {
       "hours": 4,
-      "description": "Short-Term Disability (Half-Day)"
+      "description": "SDD (Half-Day)"
     },
     "2016-6-14": {
       "hours": 4,
-      "description": "Short-Term Disability (Half-Day)"
+      "description": "SDD (Half-Day)"
     },
     "2016-6-15": {
       "hours": 4,
-      "description": "Short-Term Disability (Half-Day)"
+      "description": "SDD (Half-Day)"
     },
     "2016-6-16": {
       "hours": 4,
-      "description": "Short-Term Disability (Half-Day)"
+      "description": "SDD (Half-Day)"
     },
     "2016-6-17": {
       "hours": 4,
-      "description": "Short-Term Disability (Half-Day)"
+      "description": "SDD (Half-Day)"
     },
     "2016-6-20": {
       "hours": 4,
-      "description": "Short-Term Disability (Half-Day)"
+      "description": "SDD (Half-Day)"
     },
     "2016-6-21": {
       "hours": 4,
-      "description": "Short-Term Disability (Half-Day)"
+      "description": "SDD (Half-Day)"
     },
     "2016-6-22": {
       "hours": 4,
-      "description": "Short-Term Disability (Half-Day)"
+      "description": "SDD (Half-Day)"
     },
     "2016-6-23": {
       "hours": 4,
-      "description": "Short-Term Disability (Half-Day)"
+      "description": "SDD (Half-Day)"
     },
-    "2016-6-28": "FMLA",
-    "2016-6-29": "FMLA",
-    "2016-6-30": "FMLA",
-    "2016-7-1": "FMLA",
-    "2016-7-6": "FMLA",
-    "2016-7-7": "FMLA",
-    "2016-7-8": "FMLA",
+    "2016-6-28": "SDD",
+    "2016-6-29": "SDD",
+    "2016-6-30": "SDD",
+    "2016-7-1": "SDD",
+    "2016-7-6": "SDD",
+    "2016-7-7": "SDD",
+    "2016-7-8": "SDD",
     "2016-8-1": null,
     "2016-8-2": null,
-    "2016-9-13": "FMLA",
+    "2016-9-13": "SDD",
 
-    "2016-9-19": "FMLA",
-    "2016-9-20": "FMLA",
-    "2016-9-21": "FMLA",
-    "2016-9-22": "FMLA",
-    "2016-9-23": "FMLA",
+    "2016-9-19": "SDD",
+    "2016-9-20": "SDD",
+    "2016-9-21": "SDD",
+    "2016-9-22": "SDD",
+    "2016-9-23": "SDD",
 
-    "2016-9-26": "FMLA",
-    "2016-9-27": "FMLA",
-    "2016-9-28": "FMLA",
-    "2016-9-29": "FMLA",
-    "2016-9-30": "FMLA",
+    "2016-9-26": "SDD",
+    "2016-9-27": "SDD",
+    "2016-9-28": "SDD",
+    "2016-9-29": "SDD",
+    "2016-9-30": "SDD",
 
-    "2016-10-3": "FMLA",
-    "2016-10-4": "FMLA",
-    "2016-10-5": "FMLA",
-    "2016-10-6": "FMLA",
+    "2016-10-3": "SDD",
+    "2016-10-4": "SDD",
+    "2016-10-5": "SDD",
+    "2016-10-6": "SDD",
     "2016-10-7": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-10-10": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-10-11": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-10-12": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-10-13": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-10-14": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-10-17": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-10-18": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-10-19": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-10-20": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-10-21": {
       "hours": 6,
-      "description": "6 hour day, not well"
+      "description": "SDD: 6 hour day, not well"
     },
     "2016-10-24": {
       "hours": 4.75,
-      "description": "6 hour day, not well"
+      "description": "SDD: 6 hour day, not well"
     },
     "2016-10-25": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-10-26": {
       "hours": 8,
-      "description": "6 hour day, not well"
+      "description": "SDD: 6 hour day, not well"
     },
     "2016-10-27": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-10-28": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-10-31": {
       "hours": 8,
-      "description": "6 hour day, not well"
+      "description": "SDD: 6 hour day, not well"
     },
     "2016-11-1": {
       "hours": 8,
-      "description": "6 hour day, not well"
+      "description": "SDD: 6 hour day, not well"
     },
     "2016-11-2": {
       "hours": 8,
-      "description": "6 hour day, not well"
+      "description": "SDD: 6 hour day, not well"
     },
     "2016-11-3": {
       "hours": 8,
-      "description": "6 hour day, not well"
+      "description": "SDD: 6 hour day, not well"
     },
     "2016-11-4": {
       "hours": 8,
-      "description": "6 hour day, not well"
+      "description": "SDD: 6 hour day, not well"
     },
     "2016-11-7": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-11-8": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-11-9": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-11-10": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-11-11": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-11-14": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-11-15": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-11-16": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-11-17": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
     "2016-11-18": {
       "hours": 2,
-      "description": "6 hour day"
+      "description": "SDD: 6 hour day"
     },
-    "2016-12-2": "FMLA",
-    "2016-12-5": "FMLA",
-    "2016-12-6": "FMLA",
-    "2016-12-12": "FMLA",
-    "2016-12-13": "FMLA",
-    "2016-12-14": "FMLA",
-    "2016-12-15": "FMLA",
-    "2016-12-16": "FMLA",
-    "2016-12-19": "FMLA",
-    "2016-12-20": "FMLA",
-    "2016-12-21": "FMLA",
-    "2016-12-22": "FMLA",
-    "2016-12-23": "FMLA",
-    "2016-12-28": "FMLA",
-    "2016-12-29": "FMLA",
-    "2016-12-30": "FMLA",
-    "2017-1-3": "FMLA",
-    "2017-1-4": "FMLA",
-    "2017-1-5": "FMLA",
-    "2017-1-6": "FMLA",
-    "2017-1-9": "FMLA",
-    "2017-1-10": "FMLA",
-    "2017-1-11": "FMLA",
-    "2017-1-12": "FMLA",
-    "2017-1-13": "FMLA",
-    "2017-1-16": "FMLA",
-    "2017-2-10": null
+    "2016-12-2": "SDD",
+    "2016-12-5": "SDD",
+    "2016-12-6": "SDD",
+    "2016-12-12": "SDD",
+    "2016-12-13": "SDD",
+    "2016-12-14": "SDD",
+    "2016-12-15": "SDD",
+    "2016-12-16": "SDD",
+    "2016-12-19": "SDD",
+    "2016-12-20": "SDD",
+    "2016-12-21": "SDD",
+    "2016-12-22": "SDD",
+    "2016-12-23": "SDD",
+    "2016-12-28": "SDD",
+    "2016-12-29": "SDD",
+    "2016-12-30": "SDD",
+    "2017-1-3": "SDD",
+    "2017-1-4": "SDD",
+    "2017-1-5": "SDD",
+    "2017-1-6": "SDD",
+    "2017-1-9": "SDD",
+    "2017-1-10": "SDD",
+    "2017-1-11": "SDD",
+    "2017-1-12": "SDD",
+    "2017-1-13": "SDD",
+    "2017-1-16": "SDD",
+    "2017-2-10": null,
+    "2017-3-13": null
   },
   "vacation": {
     "2015-08-14": {
