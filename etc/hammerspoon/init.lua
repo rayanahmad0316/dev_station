@@ -100,14 +100,14 @@ window_layout = hs.window.layout.new({
 
 
     -- Tools Screen (0,0=center)
-    -- Left 35%
-    { hs.window.filter.new({ Terminal = { allowRoles = "AXStandardWindow" } }), "tile 4 focused 2x1 [0.5,0.5,34.5,99.5] 0,0 | min" },
-    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", allowTitles = "Developer Tools" }), "tile 2 focused 2x1 [0,0,35,100] 0,0 | min" },
+    -- Left 65%
+    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", rejectTitles = { "Developer Tools", "Lucidchart", "Hangouts" } }), "tile 2 focused 2x1 [0,0,65,100] 0,0 | min" },
+    { hs.window.filter.new({ SourceTree = { allowRoles = "AXStandardWindow" } }), "tile 2 focused 2x1 [0,0,65,100] 0,0 | min" },
+    { hs.window.filter.new({ MySQLWorkbench = { allowRoles = "AXStandardWindow" } }), "tile 2 focused 2x1 [0,0,65,100] 0,0 | min" },
 
-    -- Right 65%
-    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", rejectTitles = { "Developer Tools", "Lucidchart", "Hangouts" } }), "tile 2 focused 2x1 [35,0,100,100] 0,0 | min" },
-    { hs.window.filter.new({ SourceTree = { allowRoles = "AXStandardWindow" } }), "tile 2 focused 2x1 [35,0,100,100] 0,0 | min" },
-    { hs.window.filter.new({ MySQLWorkbench = { allowRoles = "AXStandardWindow" } }), "tile 2 focused 2x1 [35,0,100,100] 0,0 | min" },
+    -- Right 35%
+    { hs.window.filter.new({ Terminal = { allowRoles = "AXStandardWindow" } }), "tile 4 focused 2x1 [65.5,0.5,99.5,99.5] 0,0 | min" },
+    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", allowTitles = "Developer Tools" }), "tile 2 focused 2x1 [65,0,100,100] 0,0 | min" },
 
     -- Code Screen (1,0=right)
     { hs.window.filter.new({ PyCharm = { allowRoles = "AXStandardWindow", allowTitles = "/projects/", rejectTitles = "Replace Usage" } }), "move all focused [0,0,100,100] 1,0" },
