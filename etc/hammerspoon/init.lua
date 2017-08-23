@@ -147,6 +147,6 @@ hs.hotkey.bind({ "cmd", "alt" }, "V", function()
     hs.eventtap.keyStrokes(hs.pasteboard.getContents())
 end)
 
-window_layout:start()
+-- window_layout:start()
 
 hs.alert.show("Config loaded")
