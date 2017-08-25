@@ -83,17 +83,17 @@ bindKeysAdjustWindow({ "cmd" }, { "2", "pad2" }, 0, 10, 20, 10)
 window_layout = hs.window.layout.new({
     -- Comms Screen (-1,0=left)
     -- Maximized
-    { hs.window.filter.new({ Calendar = { allowRoles = "AXStandardWindow" } }), "move all focused [0,0,100,100] -1,0 | min" },
-    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", allowTitles = "Hangouts" }), "tile 2 focused 1x2 [0,0,100,100] -1,0 | min" },
+    -- { hs.window.filter.new({ Calendar = { allowRoles = "AXStandardWindow" } }), "move all focused [50,0,50,100] 1,0 | min" },
+    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", allowTitles = "Hangouts" }), "tile 2 focused 1x2 [0,0,100,100] 1,0 | min" },
 
     -- Left 50%
-    { hs.window.filter.new({ Mail = { allowRoles = "AXStandardWindow" } }), "tile 2 focused 2x1 [0,0,50,100] -1,0 | min" },
+    { hs.window.filter.new({ Mail = { allowRoles = "AXStandardWindow" } }), "tile 2 focused 2x1 [0,0,50,100] 1,0 | min" },
 
     -- Right 50%
-    { hs.window.filter.new({ iTunes = { allowRoles = "AXStandardWindow", rejectTitles = "MiniPlayer" } }), "fit 1 [50,0,100,100] -1,0 | min" },
+    -- { hs.window.filter.new({ iTunes = { allowRoles = "AXStandardWindow", rejectTitles = "MiniPlayer" } }), "fit 1 [50,0,100,100] -1,0 | min" },
 
     -- Top 60%
-    { hs.window.filter.new({ Slack = { allowRoles = "AXStandardWindow" } }), "fit 1 [50,0,100,60] -1,0 | min" },
+    { hs.window.filter.new({ Slack = { allowRoles = "AXStandardWindow" } }), "fit 1 [50,0,100,100] 1,0 | min" },
 
     -- Bottom 40%
     { hs.window.filter.new({ Messages = { allowRoles = "AXStandardWindow" } }), "fit 1 [50,60,100,100] -1,0 | min" },
@@ -101,17 +101,17 @@ window_layout = hs.window.layout.new({
 
     -- Tools Screen (0,0=center)
     -- Left 65%
-    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", rejectTitles = { "Developer Tools", "Lucidchart", "Hangouts" } }), "tile 2 focused 2x1 [0,0,65,100] 0,0 | min" },
-    { hs.window.filter.new({ SourceTree = { allowRoles = "AXStandardWindow" } }), "tile 2 focused 2x1 [0,0,65,100] 0,0 | min" },
+    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", rejectTitles = { "Developer Tools", "Lucidchart", "Hangouts" } }), "tile 2 focused 2x1 [0,0,70,100] -1,0 | min" },
+    { hs.window.filter.new({ SourceTree = { allowRoles = "AXStandardWindow" } }), "tile 2 focused 2x1 [0,0,65,100] 1,0 | min" },
     { hs.window.filter.new({ MySQLWorkbench = { allowRoles = "AXStandardWindow" } }), "tile 2 focused 2x1 [0,0,65,100] 0,0 | min" },
 
     -- Right 35%
-    { hs.window.filter.new({ Terminal = { allowRoles = "AXStandardWindow" } }), "tile 4 focused 2x1 [65.5,0.5,99.5,99.5] 0,0 | min" },
-    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", allowTitles = "Developer Tools" }), "tile 2 focused 2x1 [65,0,100,100] 0,0 | min" },
+    { hs.window.filter.new({ Terminal = { allowRoles = "AXStandardWindow" } }), "tile 4 focused 2x1 [70.0,0.0,100.0,100.0] -1,0 | min" },
+    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", allowTitles = "Developer Tools" }), "tile 2 focused 2x1 [70,0,100,100] -1,0 | min" },
 
     -- Code Screen (1,0=right)
-    { hs.window.filter.new({ PyCharm = { allowRoles = "AXStandardWindow", allowTitles = "/projects/", rejectTitles = "Replace Usage" } }), "move all focused [0,0,100,100] 1,0" },
-    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", allowTitles = "Lucidchart" }), "move all focused [0,0,100,100] 1,0" },
+    { hs.window.filter.new({ PyCharm = { allowRoles = "AXStandardWindow", allowTitles = "/Documents/GitHub", rejectTitles = "Replace Usage" } }), "move all focused [0,0,100,100] 0,0" },
+    { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", allowTitles = "Lucidchart" }), "move all focused [0,0,100,100] -1,0" },
 })
 
 function fix_bottom_margin(win)
@@ -147,6 +147,6 @@ hs.hotkey.bind({ "cmd", "alt" }, "V", function()
     hs.eventtap.keyStrokes(hs.pasteboard.getContents())
 end)
 
--- window_layout:start()
+window_layout:start()
 
 hs.alert.show("Config loaded")
