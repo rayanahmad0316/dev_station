@@ -102,7 +102,7 @@ window_layout = hs.window.layout.new({
     -- Tools Screen (0,0=center)
     -- Left 65%
     { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", rejectTitles = { "Developer Tools", "Lucidchart", "Hangouts" } }), "tile 2 focused 2x1 [0,0,70,100] -1,0 | min" },
-    { hs.window.filter.new({ SourceTree = { allowRoles = "AXStandardWindow" } }), "tile 2 focused 2x1 [0,0,65,100] 1,0 | min" },
+    { hs.window.filter.new({ SourceTree = { allowRoles = "AXStandardWindow" } }), "tile 2 focused 2x1 [0,0,50,100] 1,0 | min" },
     { hs.window.filter.new({ MySQLWorkbench = { allowRoles = "AXStandardWindow" } }), "tile 2 focused 2x1 [0,0,65,100] 0,0 | min" },
 
     -- Right 35%
