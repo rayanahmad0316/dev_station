@@ -109,6 +109,7 @@ window_layout = hs.window.layout.new({
     -- Right 35%
     { hs.window.filter.new({ Terminal = { allowRoles = "AXStandardWindow" } }), "tile 4 focused 2x1 [70.0,0.0,100.0,100.0] -1,-1 | min" },
     { hs.window.filter.new(false):setAppFilter("Google Chrome", { visible = true, allowRoles = "AXStandardWindow", allowTitles = "Developer Tools" }), "tile 2 focused 2x1 [70,0,100,100] -1,0 | min" },
+    { hs.window.filter.new({ python = { allowRoles = "AXStandardWindow" } }), "tile 2 focused 2x1 [0,0,70,100] -1,-1 | min" },
 
     -- Code Screen (1,0=right)
     { hs.window.filter.new({ PyCharm = { allowRoles = "AXStandardWindow", allowTitles = "/Documents/GitHub", rejectTitles = "Replace Usage" } }), "move all focused [0,0,100,100] 0,-1" },
